@@ -1,0 +1,54 @@
+<div class="add-tip-modal" *ngIf="addTip" >
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						新建事件
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<label>事件名  : </label>
+						<input [(ngModel)]="addTip.name" placeholder="name"/>
+						<span *ngIf="notice" class="tip-notice" >请输入事件名</span>											
+					</div>
+					<div>
+						<label>过期时间:</label>
+						<input [(ngModel)]="addTip.expirationTime" placeholder="expirationTime"/>
+					</div>
+					<div>
+						<label>事件描述: </label>
+						<textarea [(ngModel)]="addTip.description" placeholder="description"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">关闭
+					</button>
+					<button type="button" class="btn btn-primary"  (click)="setTip(addTip.name, addTip.expirationTime, addTip.description)">
+						保存
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="./jquery-3.1.1.min.js"></script>
+
+<!--<template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Modal title</h4>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</template>-->

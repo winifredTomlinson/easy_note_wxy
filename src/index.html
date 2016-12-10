@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/">
+        <meta charset="UTF-8" />
+        <title>Hello World!</title>
+        <link rel="stylesheet" type="text/css" href="./css/index.css">
+         <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+
+        <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
+        <script src="https://unpkg.com/reflect-metadata@0.1.8"></script>
+        <script src="https://unpkg.com/systemjs@0.19.39/dist/system.src.js"></script>
+        <script src="https://cdn.rawgit.com/angular/angular.io/b3c65a9/public/docs/_examples/_boilerplate/systemjs.config.web.js"></script>
+         <script>
+         System.config({
+            defaultJSExtensions: true,
+            packages: {
+            "/angular2-jwt": {
+             "defaultExtension": "js"
+        }
+      },
+      map: {
+        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt"
+      }
+    });
+            System.import('build/index').catch(function(err){ console.error(err); });
+        </script>
+    </head>
+    <body>
+        <div class="login">
+            <h1 class="login-title" id="title" onclick="a()">Todo List</h1>
+            <h3 class="sub-title">建立你的事件清单</h3>
+        </div>
+        <my-app>Loading...</my-app> 
+        <!--<script src="http://localhost:8080/build/index.js"></script>  -->
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="./config_js/jquery-3.1.1.min.js"></script>
+        <script src="./config_js/bootstrap-3.3.7.min.js"></script>
+        <script src="../build/index.js"></script>
+    </body>
+</html>

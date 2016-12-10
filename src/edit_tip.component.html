@@ -1,0 +1,24 @@
+<!--编辑tip页面-->
+<div *ngIf="newTip" class="tip-chart" [id] = editId>
+    <div class="tip-chart-content">
+        <div>
+            <label>事件名: </label>
+            <input [(ngModel)]="newTip.name" placeholder="name"/>					
+        </div>
+        <div>
+            <label>过期时间:</label>
+            <input [(ngModel)]="newTip.expirationTime" placeholder="expirationTime"/>
+        </div>
+        <div>
+            <label>事件描述: </label>
+            <textarea [(ngModel)]="newTip.description" placeholder="description"></textarea>
+        </div>
+    </div>
+    <div class="edit-button">
+        <button type="button" class="btn btn-default" [routerLink]="['/todo_list']" (click)="noSave(newTip.id,newTip)">取消
+        </button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/todo_list']">
+            保存
+        </button>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "files": [
+        "src/js/main.ts",
+        "src/js/greet.ts",
+        "src/js/app.component.ts",
+        "src/js/app.module.ts"
+    ],
+    "compilerOptions": {
+        "outDir": "./built",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [ "es2015", "dom" ],
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es5"
+    },
+    "include": [
+        "node_modules/*",
+        "./src/**/*"
+    ]
+}
