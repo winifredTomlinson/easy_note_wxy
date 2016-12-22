@@ -7,14 +7,14 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
 
-import { Tip } from './tip';
-import { TipService } from './tip.service';
-import { TodolistComponent } from './todo_list.component';
+import { Tip } from '../../js/tip';
+import { TipService } from '../../js/tip.service';
+import { TodolistComponent } from '../todo_list.component/todo_list.component';
 
 
 @Component({
     selector: 'more-oparetion',
-    templateUrl: 'component/more_operation.component.html',
+    templateUrl: 'component/more_operation.component/more_operation.component.html',
 })
 
 export class MoreOperationComponent implements OnInit{

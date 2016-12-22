@@ -2,11 +2,11 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { TodolistComponent }  from './todo_list.component';
+import { TodolistComponent }  from '../component/todo_list.component/todo_list.component';
 import { TipDetailComponent }  from './tip_detail.component';
 import { EditTipComponent }  from './edit_tip.component';
-import { MoreOperationComponent }  from './more_operation.component';
-import { AddTipComponent }  from './add_tip.component';
+import { MoreOperationComponent }  from '../component/more_operation.component/more_operation.component';
+import { AddTipComponent }  from '../component/add_tip.component/add_tip.component';
 
 
 //定义路由URL

@@ -2,12 +2,12 @@
 
 import {Directive, Component, OnInit,Input} from '@angular/core';
 
-import { Tip } from './tip';
-import { TipService } from './tip.service';
+import { Tip } from '../../js/tip';
+import { TipService } from '../../js/tip.service';
 
 @Component({
   selector: 'my-app',
-  templateUrl: '/todo_list.component.html',
+  templateUrl: 'component/todo_list.component/todo_list.component.html',
 })
 
 export class TodolistComponent implements OnInit {

@@ -2,16 +2,16 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {NgbModalBackdrop} from './modal_backdrop';
+import {NgbModalBackdrop} from '../../js/modal_backdrop';
 import { MaterialModule } from '@angular/material';
 
 
-import { Tip } from './tip';
-import { TipService } from './tip.service';
-import { TodolistComponent } from './todo_list.component';
+import { Tip } from '../../js/tip';
+import { TipService } from '../../js/tip.service';
+import { TodolistComponent } from '../todo_list.component/todo_list.component';
 @Component({
   selector: 'add-tip',
-  templateUrl: '/component/add_tip.component.html'
+  templateUrl: 'component/add_tip.component/add_tip.component.html'
 })
 
 // 定义添加页面的component

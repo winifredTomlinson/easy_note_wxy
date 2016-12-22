@@ -16,15 +16,14 @@ gulp.task('config_js', function () {
 });
 
 gulp.task('component_html', function () {
-    return gulp.src('src/component/*.html')
-        .pipe(gulp.dest('build/component'));
+    return gulp.src('src/component/*/*.html')
+          .pipe(gulp.dest('build/component'));
+        
 });
 
 gulp.task("copy-html", function () {
     return gulp.src(paths.pages)
         .pipe(gulp.dest("build"));
-    return gulp.src(pathComponent.pages)
-        .pipe(gulp.dest("build/component"));
 });
 
 gulp.task("default", function () {
