@@ -6,15 +6,25 @@ var paths = {
     pages: ['src/*.html']
 };
 
-gulp.task('testLess', function () {
-    return gulp.src('src/less/index.less')
-        .pipe(less())
-        .pipe(gulp.dest('build/css'));
+var pathComponent = {
+    pages: ['src/component/*.html']
+};
+
+gulp.task('config_js', function () {
+    return gulp.src('src/config_js/*.js')
+        .pipe(gulp.dest('build/config_js'));
+});
+
+gulp.task('component_html', function () {
+    return gulp.src('src/component/*.html')
+        .pipe(gulp.dest('build/component'));
 });
 
 gulp.task("copy-html", function () {
     return gulp.src(paths.pages)
         .pipe(gulp.dest("build"));
+    return gulp.src(pathComponent.pages)
+        .pipe(gulp.dest("build/component"));
 });
 
 gulp.task("default", function () {

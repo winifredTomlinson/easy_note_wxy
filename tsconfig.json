@@ -1,7 +1,6 @@
 {
     "files": [
         "src/js/main.ts",
-        "src/js/greet.ts",
         "src/js/app.component.ts",
         "src/js/app.module.ts"
     ],
