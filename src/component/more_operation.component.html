@@ -3,7 +3,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body">
-					<div class="select" data-dismiss="modal" (click)="editDetail()" [routerLink]="['/todo_list/edit', tipEdit]">
+					<div class="select" data-dismiss="modal" (click)="editDetail()" [routerLink]="['/todo_list/edit', editDetail()]">
 						<h4>编辑</h4>
 					</div>
 					<div class="delete-tip select" data-dismiss="modal" (click)="deleteTip()" [routerLink]="['/todo_list']">
