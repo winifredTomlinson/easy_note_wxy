@@ -29,7 +29,6 @@ export class AddTipComponent implements OnInit {
 
   //  添加功能
   setTip(name: string, expirationTime:string, description:string){
-
     this.notice = this.tipService.setTip(name,expirationTime,description); 
     if(!this.notice){
       this.addTip = new Tip;

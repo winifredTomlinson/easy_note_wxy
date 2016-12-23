@@ -49,8 +49,9 @@ export class TipService{
                        for(let i = id; i < TIPS.length; i++){
                            TIPS[i].id = TIPS[i].id - 1;
                        }
-                   }
-                TIPS.splice(id-1, 1);});
+                    }
+                    TIPS.splice(id-1, 1);
+                });
     }
 
     //新增tip功能（事件名为必填）

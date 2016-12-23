@@ -6,11 +6,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
 
-import { Tip } from './tip';
-import { TipService } from './tip.service';
+import { Tip } from '../../js/tip';
+import { TipService } from '../../js/tip.service';
 @Component({
     selector: 'my-app',
-    templateUrl: 'tip_detail.component.html',
+    templateUrl: 'component/tip_detail.component/tip_detail.component.html',
 })
 
 export class TipDetailComponent implements OnInit {

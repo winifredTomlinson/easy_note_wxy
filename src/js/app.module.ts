@@ -7,8 +7,8 @@ import {NgbModule}                  from '@ng-bootstrap/ng-bootstrap';
 //引入各页面component
 import { AppComponent }             from './app.component';
 import { TodolistComponent }        from '../component/todo_list.component/todo_list.component';
-import { TipDetailComponent }       from './tip_detail.component';
-import { EditTipComponent }         from './edit_tip.component';
+import { TipDetailComponent }       from '../component/tip_detail.component/tip_detail.component';
+import { EditTipComponent }         from '../component/edit_tip.component/edit_tip.component';
 import { AddTipComponent }          from '../component/add_tip.component/add_tip.component';
 import { MoreOperationComponent }   from '../component/more_operation.component/more_operation.component';
 //服务
