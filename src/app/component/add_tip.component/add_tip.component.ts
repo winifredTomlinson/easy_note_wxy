@@ -14,7 +14,7 @@ import { TodolistComponent } from '../todo_list.component/todo_list.component';
 
 // 定义添加页面的component
 export class AddTipComponent implements OnInit {
-  @Input()
+  // @Input() notice:boolean;
   tips: Tip[] = [];
   addTip: Tip;
   notice: boolean;
@@ -33,6 +33,7 @@ export class AddTipComponent implements OnInit {
 
   // 关闭按钮
   close() {
+    this.notice = false;
     this.addTip = new Tip;
   }
 

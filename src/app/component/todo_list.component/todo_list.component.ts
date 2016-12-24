@@ -15,6 +15,7 @@ export class TodolistComponent implements OnInit {
   tip: Tip;
   a: any;
   editId: number;
+  notice: boolean;
   constructor(private tipService: TipService) { }
 
   getId(id: number): void {
@@ -33,6 +34,7 @@ export class TodolistComponent implements OnInit {
   ngOnInit(): void {
     this.tipService.getTips().then(tips => {
     this.tips = tips;
+    this.notice = false;    
     });
   }
 }
