@@ -16,8 +16,8 @@ gulp.task('config_js', function () {
 });
 
 gulp.task('component_html', function () {
-    return gulp.src('src/component/*/*.html')
-          .pipe(gulp.dest('build/component'));
+    return gulp.src('src/app/component/*/*.html')
+          .pipe(gulp.dest('build/app/component'));
         
 });
 
@@ -30,7 +30,7 @@ gulp.task("default", function () {
     // return tsProject.src()
     //     .pipe(tsProject())
     //     .js.pipe(gulp.dest("build"));
-     return gulp.src('src/less/index.less')
+     return gulp.src('src/static/less/index.less')
         .pipe(less())
         .pipe(gulp.dest('build/css'));
 });

@@ -1,8 +1,8 @@
 {
     "files": [
-        "src/js/main.ts",
-        "src/js/app.component.ts",
-        "src/js/app.module.ts"
+        "src/main.ts",
+        "src/app/app.ts",
+        "src/app/app.module.ts"
     ],
     "compilerOptions": {
         "outDir": "./built",

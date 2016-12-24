@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Tip } from './tip';
-import { TIPS } from './mock_tips';
+import { Tip } from '../common/tip';
+import { TIPS } from '../common/mock_tips';
 
 @Injectable()
 export class TipService{

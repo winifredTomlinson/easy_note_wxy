@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:8080/',//资源服务器地址
     'webpack/hot/only-dev-server',
-    './src/js/main.ts'],
+    './src/main.ts'],
   //输出的文件名 合并以后的js会命名为index.js
   output: {
     publicPath: "http://127.0.0.1:8080/build/",
