@@ -1,4 +1,154 @@
 @import 'variable';
+.top-wrap{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background-color: @blue;
+    .wrap-main{
+        width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+        .quote{
+            font-size: 18px;
+            color: @white;
+        }
+    }
+}
+.index-main{
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.index-main-body{
+    width: 300px;
+    padding: 30px 0 100px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    white-space: normal;
+    overflow: hidden;
+    .index-header{
+        text-align: center;
+        .headtitle{
+            color: @blue;
+        }
+        .subtitle{
+            margin: 30px 0 20px;
+            color: @black-light;
+        }
+    }
+    .main-nav{
+        width: 300px;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 10px;
+        .nav-slider{
+            width: 100%;
+            display: inline-block;
+            position: relative;
+            .sign-wraper{
+                display: inline-block;
+                width: 4em;
+                line-height: 35px;
+                cursor: pointer;                
+            }
+        }
+        .sign-font{
+           display: inline-block;
+           width: 2em;
+           &:before{
+            display: block;
+            position: absolute;
+            content: attr(data-hover);
+            width: 0;
+            height: 100%;
+            color: @blue;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: width .3s ease-out;
+           }
+           &:hover{
+               &:before{
+                    width: 2em;
+                    transition: width .3s ease-out;
+               }
+            } 
+        }
+    }
+    .main-box{
+        position: relative;
+        width: 300px;
+        height: 200px;
+        text-align: left;
+        overflow: hidden;
+        border: 1px solid @black-lighter;   
+        transition: height .5s;
+        -moz-transition: height .5s; /* Firefox 4 */
+        -webkit-transition: height .5s; /* Safari 和 Chrome */
+        -o-transition: height .5s; /* Opera */     
+        .group-inputs{
+            font-size: 14px;
+            padding: 1px 0;
+            border-radius: 3px;
+            .input-wraper+ .input-wraper{
+                border-top:1px solid @grey; 
+            }
+            input{
+                width: 100%;
+                padding: 1em .5em;
+                border: 0;
+                outline: 0;
+            }
+        }
+        .signupWraper{
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            width: 300px;
+            transition: left .5s;
+            -moz-transition: left .5s; /* Firefox 4 */
+            -webkit-transition: left .5s; /* Safari 和 Chrome */
+            -o-transition: left .5s; /* Opera */
+            
+        }
+        .signinWraper{
+            position: absolute;
+            left: 300px;
+            display: inline-block;
+            width: 300px;
+            transition: left .5s;
+            -moz-transition: left .5s; /* Firefox 4 */
+            -webkit-transition: left .5s; /* Safari 和 Chrome */
+            -o-transition: left .5s; /* Opera */
+        }
+    }
+    .button-wraper{
+        width: 100%;
+        margin-top: 20px;
+        .sign-button{
+            text-align: center;
+            border-radius: 3px;
+            color: @white;
+            width: 100%;
+            height: 41px;
+            line-height: 41px;
+        }
+        .signup-button{
+            background: linear-gradient(to bottom,#80c3f7,#6bbaf8); 
+            opacity: .8;           
+        }
+        .signin-button{
+            background: @blue;
+            border: 0;
+            &:hover{
+                background: @blue-deep;
+            }
+        }
+    }
+}
 .login{
     width: 100%;
     text-align: center;

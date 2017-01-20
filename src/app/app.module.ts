@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //引入各页面component
+import { SignInComponent } from './component/sign_in.component/sign_in.component';
 import { AppComponent } from './app';
 import { TodolistComponent } from './component/todo_list.component/todo_list.component';
 import { TipDetailComponent } from './component/tip_detail.component/tip_detail.component';
@@ -17,7 +18,7 @@ import { TipService } from './services/tip.service';
 import { AppRoutingModule } from './app_routing.module';
 
 let localStorageServiceConfig = {
-  prefix: 'my-app',
+  prefix: 'nk-app',
   storageType: 'sessionStorage'
 };
 
@@ -30,6 +31,7 @@ let localStorageServiceConfig = {
     NgbModule.forRoot()
   ],
   declarations: [
+    SignInComponent,
     AppComponent,
     TodolistComponent,
     TipDetailComponent,
