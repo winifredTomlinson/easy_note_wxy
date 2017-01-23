@@ -21,10 +21,17 @@ gulp.task('component_html', function () {
         
 });
 
+gulp.task('fonts', function () {
+    return gulp.src('src/static/fonts/*')
+          .pipe(gulp.dest('build/fonts'));
+        
+});
+
 gulp.task("copy-html", function () {
     return gulp.src(paths.pages)
         .pipe(gulp.dest("build"));
 });
+
 
 gulp.task("default", function () {
     // return tsProject.src()
@@ -34,6 +41,8 @@ gulp.task("default", function () {
         .pipe(less())
         .pipe(gulp.dest('build/css'));
 });
+
+
 
 
 

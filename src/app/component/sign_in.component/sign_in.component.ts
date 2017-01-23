@@ -11,6 +11,7 @@ export class SignInComponent implements OnInit{
   private signupWraper: any;
   private signinWraper: any;
   private currentOperate: string='注册';
+  private noteLetter: any;
   private signin(){
     this.mainBox.style.height = '100px';
     this.signupWraper.style.left = '-300px';
@@ -28,6 +29,8 @@ export class SignInComponent implements OnInit{
     this.mainBox = document.getElementById("mainBox");    
     this.signupWraper = document.getElementById("signupWraper");
     this.signinWraper = document.getElementById("signinWraper");
+    this.noteLetter = document.getElementById("noteLetter");
+    // this.noteLetter.style.height = "420px";
   }
 
 }

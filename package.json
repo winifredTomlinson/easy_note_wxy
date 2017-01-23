@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "gulp | gulp copy-html | gulp config_js | gulp component_html | webpack | webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./build",
+    "dev": "gulp | gulp fonts | gulp copy-html | gulp config_js | gulp component_html | webpack | webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./build",
     "build": "webpack --progress --colors",
     "lint": "tslint \"src/**/*.ts\" -t verbose",
     "clean": "npm run rimraf -- dist"
