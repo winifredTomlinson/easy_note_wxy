@@ -33,6 +33,15 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "ts-loader": "^1.2.2",
     "typescript": "^2.0.10",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "loaders.css": "^0.1.2",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "raw-loader": "0.5.1",
+    "stylus": "0.54.5",
+    "stylus-loader": "^2.4.0",
+    "webpack": "2.2.0-rc.3",
+    "webpack-merge": "2.2.0",
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {

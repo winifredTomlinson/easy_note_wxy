@@ -6,12 +6,120 @@
     font-weight: normal;
     font-style: normal;
 }
+#app{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-family: "druk_pierre_testregular";
+    background: @black;
+}
+
+section#intro{
+    width: 100%;
+    height: 100%;
+    background: @black;
+    visibility: visible;
+    opacity: 1;
+    overflow: hidden;
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: @white;
+    animation:titleIntro 3.8s forwards;
+    -webkit-animation:titleIntro 3.8s forwards; /*Safari and Chrome*/
+    @keyframes titleIntro
+        {
+        90% {height: 100%;}
+        100% {height: 0;}
+    }
+
+        @-webkit-keyframes titleIntro /*Safari and Chrome*/
+        {
+        90% {display: block;}
+        100% {display: none;}
+    }
+    .intro-inner{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h1{
+        overflow: hidden;
+        font-size: 54px;
+        text-transform: uppercase;
+        letter-spacing: 18px;
+        font-weight: 100;
+        -webkit-margin-before: 0.83em;
+        -webkit-margin-after: 0.83em;
+        .inner{
+            animation:frontTitle1 5s forwards;
+            -webkit-animation:frontTitle1 5s forwards; /*Safari and Chrome*/
+            @keyframes frontTitle1
+                {
+                0% {transform: translateY(150%);}
+                20% {transform: translateY(0);}
+                60% {transform: translateY(0);}
+                80% {transform: translateY(-150%);}
+            }
+
+             @-webkit-keyframes frontTitle1 /*Safari and Chrome*/
+                {
+                0% {transform: translateY(150%);}
+                20% {transform: translateY(0);}
+                60% {transform: translateY(0);}
+                80% {transform: translateY(-150%);}
+            }
+        }
+    }
+    h2{
+        overflow: hidden;
+        font-family: "微软雅黑";
+        font-weight: 300px;
+        margin: 15px 0 0 0;
+        font-size: 17px;
+        -webkit-margin-before: 0.83em;
+        -webkit-margin-after: 0.83em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        .inner{
+            animation:frontTitle2 5s forwards;
+            -webkit-animation:frontTitle2 5s forwards; /*Safari and Chrome*/
+            @keyframes frontTitle2
+                {
+                0% {transform: translateY(180%);}
+                10% {transform: translateY(180%);}
+                30% {transform: translateY(0);}
+                50% {transform: translateY(0);}
+                80% {transform: translateY(-180%);}
+            }
+
+                @-webkit-keyframes frontTitle2 /*Safari and Chrome*/
+                {
+                0% {transform: translateY(180%);}
+                10% {transform: translateY(180%);}
+                30% {transform: translateY(0);}
+                50% {transform: translateY(0);}
+                80% {transform: translateY(-180%);}
+
+            }
+        }
+    }
+}
+.sign-content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 .top-wrap{
     width: 100%;
     height: 50px;
     line-height: 50px;
     font-size: 14px;
     background-color: @blue;
+    font-family: "微软雅黑";    
     .wrap-main{
         width: 960px;
         margin: 0 auto;
@@ -26,7 +134,6 @@
     width: 100%;
     text-align: center;
     white-space: nowrap;
-    background: @blue-light;
 }
 .title-wrapper{
     width: 100%;
@@ -50,13 +157,13 @@
             {
             from {transform: translateY(-10%);}
             to {transform: translateY(-50%);}
-            }
+        }
 
             @-webkit-keyframes mymove /*Safari and Chrome*/
             {
             from {transform: translateY(-10%);}
             to {transform: translateY(-50%);}
-            }
+        }
         .letter{
             height: 420px;
             font-family: 'druk_pierre_testregular';
@@ -117,6 +224,7 @@
             }
         }
         .sign-font{
+           color: @black-light;            
            display: inline-block;
            width: 2em;
            &:before{
@@ -137,6 +245,9 @@
                }
             } 
         }
+        .sign-active{
+            color: @blue;
+        }
     }
     .main-box{
         position: relative;
@@ -144,7 +255,7 @@
         height: 200px;
         text-align: left;
         overflow: hidden;
-        border: 1px solid @black-lighter;   
+        /*border: 1px solid @black-lighter;   */
         transition: height .5s;
         -moz-transition: height .5s; /* Firefox 4 */
         -webkit-transition: height .5s; /* Safari 和 Chrome */

@@ -10,7 +10,7 @@ export class SignInComponent implements OnInit{
   private mainBox:any;
   private signupWraper: any;
   private signinWraper: any;
-  private currentOperate: string='注册';
+  private currentOperate: string = '注册';
   private noteLetter: any;
   private signin(){
     this.mainBox.style.height = '100px';
