@@ -1,0 +1,81 @@
+.top{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    top: 0;
+    background: @blue;
+}
+.top-left{
+    padding-left: 20px;
+    .quote{
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 18px;
+        color: @white;
+    }
+}
+ .menu-button{
+    display: inline-block;
+    width: 55px;
+    height: 100%;
+    background: @blue-grey;
+    left: 240px;
+    cursor: pointer;
+    .menu-line{
+        background: @white;
+        width: 25px;
+        height: 3px;
+        border-radius: 3px;
+         &:first-child{
+            transform: translateY(-4px);
+        }
+        &:last-child{
+            transform: translateY(4px);
+        }
+    }
+    ul{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 13px;
+       
+    }
+}
+.main-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: "微软雅黑";
+    .index-body{
+        width: 100%;
+        height: 752px;
+        display: table;
+    } 
+}
+
+.nav-scroll{
+    width: 240px;
+    height: 100%;
+    background: @black;
+    display: table-cell;
+    color: @white;
+}
+.nav-file{
+    display: table-cell;
+    background: @grey-deeper;
+    width: 320px;
+    color: @white;
+}
+.sider-content{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        background: @blue;
+    }
+}
+.detail-container{
+    display: table-cell;
+    background: @grey-light;
+}
