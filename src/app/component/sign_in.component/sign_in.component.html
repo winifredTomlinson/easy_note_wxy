@@ -45,10 +45,10 @@
                     <div class="main-nav">
                         <div class="nav-slider">
                             <div class="sign-wraper">
-                                <div (click)="signup()" class="sign-font" [ngClass]="{'sign-active': currentOperate == '注册'}" data-hover="注册">注册</div>
+                                <div (click)="signup()" class="nav-font" [ngClass]="{'active': currentOperate == '注册'}" data-hover="注册">注册</div>
                             </div>
                             <div class="sign-wraper">
-                                <div (click)="signin()" class="sign-font" [ngClass]="{'sign-active': currentOperate == '登录'}" data-hover="登录">登录</div>
+                                <div (click)="signin()" class="nav-font" [ngClass]="{'active': currentOperate == '登录'}" data-hover="登录">登录</div>
                             </div>
                         </div>
                     </div>

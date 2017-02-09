@@ -18,6 +18,9 @@
                         <div class="top top-left">
                             <span class="quote">你的笔记管家</span>
                         </div>
+                        <div class="sider-title">
+                            <span class="nav-font top-font" [ngClass]="{'active': currentOperate == '注册'}" data-hover="新建">新建</span>
+                        </div>
                         <div class="sider-content">
                             <div class="content-menu">
                                 我的文件夹
@@ -28,7 +31,7 @@
                         </div>
                     </div>
                     <div class="nav-file">
-                        <div class="top top-file">
+                        <div class="top">
                             <div class="menu-button" (click)="toggleLeftMenu()" >
                                 <ul>
                                     <li class="menu-line"></li>
@@ -45,7 +48,9 @@
                         </div>
                     </div>
                     <div class="detail-container">
-                        
+                        <div class="top top-edit">
+                            profile
+                        </div>
                     </div>
                 </div>
             <!--</div>-->

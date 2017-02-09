@@ -223,31 +223,6 @@ section#intro{
                 cursor: pointer;                
             }
         }
-        .sign-font{
-           color: @black-light;            
-           display: inline-block;
-           width: 2em;
-           &:before{
-            display: block;
-            position: absolute;
-            content: attr(data-hover);
-            width: 0;
-            height: 100%;
-            color: @blue;
-            overflow: hidden;
-            white-space: nowrap;
-            transition: width .3s ease-out;
-           }
-           &:hover{
-               &:before{
-                    width: 2em;
-                    transition: width .3s ease-out;
-               }
-            } 
-        }
-        .sign-active{
-            color: @blue;
-        }
     }
     .main-box{
         position: relative;
@@ -319,6 +294,32 @@ section#intro{
             }
         }
     }
+}
+.nav-font{
+    color: @black-light;            
+    display: inline-block;
+    width: 2em;
+    cursor: pointer;
+    &:before{
+    display: block;
+    position: absolute;
+    content: attr(data-hover);
+    width: 0;
+    height: 100%;
+    color: @blue;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width .1s ease-out;
+    }
+    &:hover{
+        &:before{
+            width: 2em;
+            transition: width .3s ease-out;
+        }
+    } 
+}
+.active{
+    color: @blue;
 }
 .login{
     width: 100%;
