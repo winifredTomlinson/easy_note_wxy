@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //引入各页面component
 import { SignInComponent } from './component/sign_in.component/sign_in.component';
 import { FileComponent } from './component/file.component/file.component';
+import { FavoriteComponent } from './component/favoriteNotes.component/favoriteNotes.component';
 import { AppComponent } from './app';
 import { TodolistComponent } from './component/todo_list.component/todo_list.component';
 import { TipDetailComponent } from './component/tip_detail.component/tip_detail.component';
@@ -34,6 +35,7 @@ let localStorageServiceConfig = {
   declarations: [
     SignInComponent,
     FileComponent,
+    FavoriteComponent,
     AppComponent,
     TodolistComponent,
     TipDetailComponent,

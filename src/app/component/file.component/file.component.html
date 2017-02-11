@@ -51,6 +51,9 @@
                         <div class="top top-edit">
                             profile
                         </div>
+                        <iframe [style.display]="currentIsNg1Module ? 'block': 'none'" id="iframe-for-ng1-page" [src]="ng1PageSrc" frameborder="0"
+                            scrolling="no" [style.height]="iframeHeight">
+                        </iframe>
                     </div>
                 </div>
             <!--</div>-->

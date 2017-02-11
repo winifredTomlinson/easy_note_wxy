@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SignInComponent } from './component/sign_in.component/sign_in.component';
 import { FileComponent } from './component/file.component/file.component';
+import { FavoriteComponent } from './component/favoriteNotes.component/favoriteNotes.component';
 import { TodolistComponent } from './component/todo_list.component/todo_list.component';
 import { TipDetailComponent } from './component/tip_detail.component/tip_detail.component';
 import { EditTipComponent } from './component/edit_tip.component/edit_tip.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin',  component: SignInComponent },
   { path: 'file',  component: FileComponent },
+  { path: 'favoriteNotes',  component: FavoriteComponent },
   // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
   { path: 'todo_list', component: TodolistComponent },
   { path: 'todo_list/:id', component: TipDetailComponent },

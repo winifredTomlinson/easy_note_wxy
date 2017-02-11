@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { NoteAjax } from '../../services/NoteAjax';
-import { NoteAuth } from '../../services/NoteAuth';
+// import { NoteAuth } from '../../services/NoteAuth';
 
 @Component({
-  selector: 'nk-app',
   templateUrl: 'app/component/file.component/file.component.html',
 })
 
@@ -14,7 +13,7 @@ export class FileComponent implements OnInit{
   private configurationInfo: any = {};
   constructor(
     // private noteAjax: NoteAjax,
-    private noteAuth: NoteAuth
+    // private noteAuth: NoteAuth
   ) { }
   public toggleLeftMenu(){
     if(this.state=='open'){
@@ -34,7 +33,7 @@ export class FileComponent implements OnInit{
         Key: this.configurationInfo.key,
         Value: this.configurationInfo.value,
         Description: this.configurationInfo.description,
-        InUser: this.noteAuth.getUserInfo().UserID
+        // InUser: this.noteAuth.getUserInfo().UserID
       }
     // this.noteAjax.post(`127.0.0.1:3000`, this.noteConf)
     //     .then(res => {
