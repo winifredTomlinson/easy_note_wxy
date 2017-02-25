@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nk-app',
   templateUrl: 'app/component/sign_in.component/sign_in.component.html',
 })
 

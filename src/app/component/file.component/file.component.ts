@@ -11,6 +11,7 @@ export class FileComponent implements OnInit{
   private state: string = 'open';
   private noteConf: any = {};
   private configurationInfo: any = {};
+  private PageSrc:any;
   constructor(
     // private noteAjax: NoteAjax,
     // private noteAuth: NoteAuth

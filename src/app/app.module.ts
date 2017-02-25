@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { nvD3 } from 'ng2-nvd3';
 import { LocalStorageService, ILocalStorageServiceConfig } from 'angular-2-local-storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +43,7 @@ let localStorageServiceConfig = {
     EditTipComponent,
     AddTipComponent,
     MoreOperationComponent,
+    nvD3
   ],
   providers: [TipService, LocalStorageService, {
     provide: 'LOCAL_STORAGE_SERVICE_CONFIG', useValue: localStorageServiceConfig
