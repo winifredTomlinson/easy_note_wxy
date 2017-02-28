@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { NegUtil } from './NoteUtil';
+import { NoteUtil } from './NoteUtil';
 
 let isPlainObject = (value:any) => !!value && Object.prototype.toString.call(value) === '[object Object]';
 
@@ -15,9 +15,9 @@ interface IStorage {
 }
 
 class CookieStorage implements IStorage {
-  private negUtil: NegUtil;
+  private negUtil: NoteUtil;
 
-  constructor(negUtil: NegUtil) {
+  constructor(negUtil: NoteUtil) {
     this.negUtil = negUtil;
   }
 
@@ -157,7 +157,7 @@ export class NoteStorage {
   public session:any;
   public memory:any;
 
-  constructor(private negUtil: NegUtil) {
+  constructor(private negUtil: NoteUtil) {
     this.cookie = new CookieStorage(negUtil);
     this.local = new LocalStorage();
     this.session = new SessionStorage();

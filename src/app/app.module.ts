@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { nvD3 } from 'ng2-nvd3';
+// import { nvD3 } from 'ng2-nvd3';
 import { LocalStorageService, ILocalStorageServiceConfig } from 'angular-2-local-storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 
 //引入各页面component
 import { SignInComponent } from './component/sign_in.component/sign_in.component';
@@ -15,6 +17,8 @@ import { TipDetailComponent } from './component/tip_detail.component/tip_detail.
 import { EditTipComponent } from './component/edit_tip.component/edit_tip.component';
 import { AddTipComponent } from './component/add_tip.component/add_tip.component';
 import { MoreOperationComponent } from './component/more_operation.component/more_operation.component';
+
+
 //服务
 import { TipService } from './services/tip.service';
 //路由
@@ -31,7 +35,8 @@ let localStorageServiceConfig = {
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ChartsModule
   ],
   declarations: [
     SignInComponent,
@@ -43,7 +48,8 @@ let localStorageServiceConfig = {
     EditTipComponent,
     AddTipComponent,
     MoreOperationComponent,
-    nvD3
+    // nvD3,
+    // ChartsModule
   ],
   providers: [TipService, LocalStorageService, {
     provide: 'LOCAL_STORAGE_SERVICE_CONFIG', useValue: localStorageServiceConfig

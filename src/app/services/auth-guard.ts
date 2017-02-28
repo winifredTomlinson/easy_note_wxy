@@ -1,32 +1,32 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate, CanLoad, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+// import { Injectable } from '@angular/core';
+// import { Router, CanActivate, CanLoad, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { AuthService } from './';
+// import { AuthService } from './';
 
-@Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+// @Injectable()
+// export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) { }
+//   constructor(
+//     private router: Router,
+//     private authService: AuthService
+//   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot, isChild = false): Promise<boolean> {
-    let moduleName = state.url.split('/')[1];
-    // if(!isChild && moduleName){
-    //   this.negModuleLoader.useModuleStyles(moduleName);
-    // }
-    return this.authService.requireAuth(state, route, this.router, isChild);
-  }
+//   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot, isChild = false): Promise<boolean> {
+//     let moduleName = state.url.split('/')[1];
+//     // if(!isChild && moduleName){
+//     //   this.negModuleLoader.useModuleStyles(moduleName);
+//     // }
+//     return this.authService.requireAuth(state, route, this.router, isChild);
+//   }
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    return this.canActivate(route, state, true);
-  }
+//   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+//     return this.canActivate(route, state, true);
+//   }
 
-  canDeactivate(): boolean {
-    return true;
-  }
-  canLoad(): boolean {
-    return true;
-  }
-}
+//   canDeactivate(): boolean {
+//     return true;
+//   }
+//   canLoad(): boolean {
+//     return true;
+//   }
+// }

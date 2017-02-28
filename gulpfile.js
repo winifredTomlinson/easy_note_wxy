@@ -11,7 +11,7 @@ var pathComponent = {
 };
 
 gulp.task('config_js', function () {
-    return gulp.src('src/config_js/*.js')
+    return gulp.src('src/config_js/*')
         .pipe(gulp.dest('build/config_js'));
 });
 
