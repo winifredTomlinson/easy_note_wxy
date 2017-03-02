@@ -1,47 +1,21 @@
-<!--<style>
-   #chart {                                                          /* NEW */
-        height: 360px;                                                  /* NEW */
-        position: relative;                                             /* NEW */
-        width: 360px;                                                   /* NEW */
-      }                                                                 /* NEW */
-      .tooltip {                                                        /* NEW */
-        background: #eee;
-        box-shadow: 0 0 5px #999999;/* NEW */
-        color: #333;/* NEW */
-        display: none;
-        font-size: 12px;
-        left: 130px;                                                    /* NEW */
-        padding: 10px;                                                  /* NEW */
-        position: absolute;                                             /* NEW */
-        text-align: center;                                             /* NEW */
-        top: 95px;                                                      /* NEW */
-        width: 80px;                                                    /* NEW */
-        z-index: 10;                                                    /* NEW */
-      }                                                                 /* NEW */
-      .legend {
-        font-size: 12px;
-      }
-      rect {
-        cursor: pointer;
-        stroke-width: 2;
-      }
-       rect.disabled {                                                 /* NEW */
-        fill: transparent !important;                                 /* NEW */
-      }
-      h1 {                                                            /* NEW */
-        font-size: 14px;                                              /* NEW */
-        text-align: center;/* NEW */
-      }/* NEW */
-</style>-->
-   <!--<div id="chart"></div>-->
-
 <div style="display: block">
-  <canvas baseChart
+<div class="">
+  <button type="" (click)="showChart('line')">线性图</button>
+  <button type="" (click)="showChart('pie')">饼状图</button>
+</div>
+  <!--<canvas class="pie-chart" baseChart
           [data]="pieChartData"
           [labels]="pieChartLabels"
           [chartType]="pieChartType"
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
+  </canvas>-->
+   <canvas [ngClass]="{'line-chart': chartType == 'line','pie-chart':chartType == 'pie'}" baseChart
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [chartType]="pie"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
   </canvas>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="../../config_js/chart.min.js"></script>

@@ -10,22 +10,55 @@ declare let d3: any;
   templateUrl: 'app/component/favoriteNotes.component/favoriteNotes.component.html',
 })
 export class FavoriteComponent implements OnInit {
+  private chartData: Array<any>;
+  private chartLabels:Array<any>;
+  private chartType:string = 'line';
+
+
   private options: any;
   private data: any;
-  public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-  public pieChartData: number[] = [300, 500, 100];
-  public pieChartType: string = 'pie';
+
+
+  private lineChartData:Array<any> = [
+    {data: [5, 9, 1, 2, 0, 5, 4], label: 'Series A'},
+    {data: [8, 8, 4, 9, 6, 2, 9], label: 'Series B'},
+    {data: [2, 2, 4, 6, 6, 2, 3], label: 'Series C'} 
+  ];
+  private lineChartLabels:Array<any> = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  private lineChartType:string = 'line';
+
+
+  private pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  private pieChartData: number[] = [300, 500, 100];
+  private pieChartType: string = 'pie';
 
   // events
   public chartClicked(e: any): void {
     console.log(e);
+    console.log(e.radius);
   }
 
   public chartHovered(e: any): void {
     console.log(e);
   }
+   public showChart(e: any): void {
+    this.chartType = e;
+    if(e == 'line'){
+      this.chartData = this.lineChartData;
+      this.chartLabels = this.lineChartLabels;
+    }
+    if(e == 'pie'){
+      this.chartData = this.pieChartData;
+      this.chartLabels = this.pieChartLabels;
+    }
+     console.log(this.chartData);
+     console.log(this.chartLabels);
+     console.log(this.chartType);
+  }
 
   ngOnInit() {
+    this.chartData = this.lineChartData;
+    this.chartLabels = this.lineChartLabels;
     // this.options = {
     //   chart: {
     //     type: 'lineChart',
