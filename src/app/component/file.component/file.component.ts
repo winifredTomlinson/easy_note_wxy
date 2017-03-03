@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class FileComponent implements OnInit{
   private leftNav: any;
+  private contentRight: any;
   private state: string = 'open';
   private noteConf: any = {};
   private configurationInfo: any = {};
@@ -19,10 +20,13 @@ export class FileComponent implements OnInit{
   public toggleLeftMenu(){
     if(this.state=='open'){
       this.leftNav.style.display = 'none';
+      // this.contentRight.style.left = '0';
+      // this.contentRight.style.width = '100%';
       return this.state='close';
     }
     if(this.state=='close'){
       this.leftNav.style.display = 'table-cell';
+      // this.contentRight.style.left = this.contentRight.style.width;
       return this.state='open';
     }
   }
@@ -44,6 +48,7 @@ export class FileComponent implements OnInit{
 
   ngOnInit(): void {
     this.leftNav = document.getElementById('leftNav');
+    this.contentRight = document.getElementById('contentRight');
   }
 
 }

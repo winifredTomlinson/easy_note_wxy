@@ -12,7 +12,6 @@ declare let d3: any;
 export class FavoriteComponent implements OnInit {
   private chartData: Array<any>;
   private chartLabels:Array<any>;
-  private chartType:string = 'line';
 
 
   private options: any;
@@ -41,24 +40,23 @@ export class FavoriteComponent implements OnInit {
   public chartHovered(e: any): void {
     console.log(e);
   }
-   public showChart(e: any): void {
-    this.chartType = e;
-    if(e == 'line'){
-      this.chartData = this.lineChartData;
-      this.chartLabels = this.lineChartLabels;
+   public showLineChart(e: any): void {
+     this.lineChartType = e ;
     }
-    if(e == 'pie'){
-      this.chartData = this.pieChartData;
-      this.chartLabels = this.pieChartLabels;
+    public showPieChart(e: any): void {
+     this.pieChartType = e ;
     }
-     console.log(this.chartData);
-     console.log(this.chartLabels);
-     console.log(this.chartType);
-  }
+    //  console.log(this.chartData);
+    //  console.log(this.chartLabels);
+    //  console.log(this.chartType);
+  
 
   ngOnInit() {
     this.chartData = this.lineChartData;
     this.chartLabels = this.lineChartLabels;
+    // console.log(document.getElementById('canvas').innerHTML);
+    console.log(document.getElementById('canvas'));
+    
     // this.options = {
     //   chart: {
     //     type: 'lineChart',
