@@ -22,18 +22,19 @@
                             <span class="nav-font top-font" [ngClass]="{'active': currentOperate == '注册'}" data-hover="新建">新建</span>
                         </div>
                         <div class="sider-content">
-                            <div class="content-menu">
-                                我的文件夹
-                            </div>
-                            <div class="content-menu">
-                                我的文件夹
-                            </div>
+                            <li class="content-menu">
+                            <a href="javascript:;">我的文件夹</a>
+                                
+                            </li>
+                            <li class="content-menu">
+                            <a href="javascript:;">我的文件夹</a>
+                            </li>
                         </div>
                     </div>
                     <!--<div class="content-right" id="contentRight">-->
                         <div class="nav-file">
                             <div class="top">
-                                <div class="menu-button" (click)="toggleLeftMenu()" >
+                                <div class="menu-button" id="menuButton" (click)="toggleLeftMenu()" >
                                     <ul>
                                         <li class="menu-line"></li>
                                         <li class="menu-line"></li>

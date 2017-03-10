@@ -16,6 +16,7 @@
     }
 }
 .top-font{
+    position: absolute;
     color: @white;
 }
  .menu-button{
@@ -25,11 +26,27 @@
     background: @blue-grey;
     left: 240px;
     cursor: pointer;
+    &:hover{
+        .menu-line:nth-child(1){
+                transform: translateY(-6px);
+            }
+        .menu-line:nth-child(2){
+            transform: scaleX(1);
+        }
+        .menu-line:nth-child(3){
+            transform: translateY(6px);
+        }
+    }
+
     .menu-line{
         background: @white;
         width: 25px;
         height: 3px;
         border-radius: 3px;
+        transition: transform .5s;
+        -moz-transition: transform .5s; /* Firefox 4 */
+        -webkit-transition: transform .5s; /* Safari 和 Chrome */
+        -o-transition: transform .5s; /* Opera */
          &:first-child{
             transform: translateY(-4px);
         }
@@ -41,8 +58,17 @@
         display: inline-block;
         vertical-align: middle;
         margin: 0 0 0 13px;
-       
     }
+ }
+
+.is-active .menu-line:nth-child(1){
+     transform: rotate(-45deg) translate3d(-2px, 2px, 0);
+}
+.is-active .menu-line:nth-child(2){
+     transform: scaleX(0);
+}
+.is-active .menu-line:nth-child(3){
+     transform: rotate(45deg) translate3d(-2px, -3px, 0);
 }
 .main-container{
     position: absolute;
@@ -55,7 +81,6 @@
         display: table;
     } 
 }
-
 .nav-scroll{
     width: 240px;
     height: 100%;
@@ -90,10 +115,25 @@
     line-height: 40px;
     text-align: center;
     cursor: pointer;
+    li{
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
 }
 .content-menu{
-    &:hover{
-        background: @blue;
+    a{
+        border-left: 3px solid transparent;
+        color: @grey-white-light;
+        box-sizing: border-box;
+        &.active{
+            border-left: @blue 3px solid;
+        }
+        &:hover{
+            border-left-color:@blue;
+            color: @white;
+            background: @black-deep;
+        }
     }
 }
 .detail-container{
