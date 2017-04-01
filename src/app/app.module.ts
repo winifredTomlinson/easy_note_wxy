@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
+// import { Ng2UeditorModule } from 'ng2-ueditor';
 
 //引入各页面component
 import { SignInComponent } from './component/sign_in.component/sign_in.component';
@@ -17,6 +17,9 @@ import { TipDetailComponent } from './component/tip_detail.component/tip_detail.
 import { EditTipComponent } from './component/edit_tip.component/edit_tip.component';
 import { AddTipComponent } from './component/add_tip.component/add_tip.component';
 import { MoreOperationComponent } from './component/more_operation.component/more_operation.component';
+import { TreeComponent } from './component/tree.component/tree.component';
+import { TreeItemComponent } from './component/tree.component/tree-item.component';
+
 
 
 //服务
@@ -36,7 +39,8 @@ let localStorageServiceConfig = {
     FormsModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    // Ng2UeditorModule
   ],
   declarations: [
     SignInComponent,
@@ -48,6 +52,8 @@ let localStorageServiceConfig = {
     EditTipComponent,
     AddTipComponent,
     MoreOperationComponent,
+    TreeComponent,
+    TreeItemComponent,
     // nvD3,
     // ChartsModule
   ],

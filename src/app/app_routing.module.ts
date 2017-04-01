@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { AuthService, AuthGuard } from './services';
+import { AuthService, AuthGuard } from './services';
 
 import { SignInComponent } from './component/sign_in.component/sign_in.component';
 import { FileComponent } from './component/file.component/file.component';
@@ -14,31 +14,33 @@ import { AddTipComponent } from './component/add_tip.component/add_tip.component
 
 //定义路由URL
 const routes: Routes = [
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  // { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  // { path: 'signin', component: SignInComponent },
+  // // { path: 'file', component: FileComponent },
+  // { path: 'favoriteNotes', component: FavoriteComponent },
+  // // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
+  // { path: 'todo_list', component: TodolistComponent },
+  // { path: 'todo_list/:id', component: TipDetailComponent },
+  // { path: 'todo_list/edit/:id', component: EditTipComponent },
+  // { path: 'todo_list/add-tip', component: AddTipComponent },
+  // { path: 'todo_list/more-operation/:id', component: MoreOperationComponent },
+
+
+  // { path: '', redirectTo: '/signin' , pathMatch: 'full'},
   { path: 'signin', component: SignInComponent },
-  { path: 'file', component: FileComponent },
-  { path: 'favoriteNotes', component: FavoriteComponent },
-  // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
-  { path: 'todo_list', component: TodolistComponent },
-  { path: 'todo_list/:id', component: TipDetailComponent },
-  { path: 'todo_list/edit/:id', component: EditTipComponent },
-  { path: 'todo_list/add-tip', component: AddTipComponent },
-  { path: 'todo_list/more-operation/:id', component: MoreOperationComponent },
-
-
-  // {
-  //   path: 'signin', component: SignInComponent, canActivate: [AuthGuard],
-  //   children: [
-  //     { path: 'file', component: FileComponent },
-  //     { path: 'favoriteNotes', component: FavoriteComponent },
-  //     // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
-  //     { path: 'todo_list', component: TodolistComponent },
-  //     { path: 'todo_list/:id', component: TipDetailComponent },
-  //     { path: 'todo_list/edit/:id', component: EditTipComponent },
-  //     { path: 'todo_list/add-tip', component: AddTipComponent },
-  //     { path: 'todo_list/more-operation/:id', component: MoreOperationComponent },
-  //   ]
-  // }
+  {
+    path: '', component: FileComponent,
+    children: [
+      { path: '', component: EditTipComponent },
+      { path: 'favoriteNotes', component: FavoriteComponent },
+      // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
+      // { path: 'todo_list', component: TodolistComponent },
+      // { path: 'todo_list/:id', component: TipDetailComponent },
+      // { path: 'todo_list/edit/:id', component: EditTipComponent },
+      // { path: 'todo_list/add-tip', component: AddTipComponent },
+      // { path: 'todo_list/more-operation/:id', component: MoreOperationComponent },
+    ]
+  }
 
 ];
 

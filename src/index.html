@@ -5,8 +5,11 @@
   <base href="/">
   <meta charset="UTF-8" />
   <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
   <style>
-    .baseLoad {
+    .my-baseLoad {
       /*overflow: hidden;*/
      height: 9em;
   left: 50%;
@@ -19,9 +22,9 @@
   transform-style: preserve-3d;
 }
 
-.cube,
-.cube:after,
-.cube:before {
+.my-cube,
+.my-cube:after,
+.my-cube:before {
   content: '';
   float: left;
   height: 3em;
@@ -30,7 +33,7 @@
 }
 
 /* Top */
-.cube {
+.my-cube {
   background-color: #05afd1;
   position: relative;
   transform: translateZ(3em);
@@ -39,41 +42,41 @@
   box-shadow: 13em 13em 1.5em rgba(0, 0, 0, 0.1);
   animation: anim 1s infinite;
 }
-.cube:after {
+.my-cube:after {
   background-color: #049dbc;
   transform: rotateX(-90deg) translateY(3em);
   transform-origin: 100% 100%;
 }
-.cube:before {
+.my-cube:before {
   background-color: #048ca7;
   transform: rotateY(90deg) translateX(3em);
   transform-origin: 100% 0;
 }
-.cube:nth-child(1) {
+.my-cube:nth-child(1) {
   animation-delay: 0.05s;
 }
-.cube:nth-child(2) {
+.my-cube:nth-child(2) {
   animation-delay: 0.1s;
 }
-.cube:nth-child(3) {
+.my-cube:nth-child(3) {
   animation-delay: 0.15s;
 }
-.cube:nth-child(4) {
+.my-cube:nth-child(4) {
   animation-delay: 0.2s;
 }
-.cube:nth-child(5) {
+.my-cube:nth-child(5) {
   animation-delay: 0.25s;
 }
-.cube:nth-child(6) {
+.my-cube:nth-child(6) {
   animation-delay: 0.3s;
 }
-.cube:nth-child(7) {
+.my-cube:nth-child(7) {
   animation-delay: 0.35s;
 }
-.cube:nth-child(8) {
+.my-cube:nth-child(8) {
   animation-delay: 0.4s;
 }
-.cube:nth-child(9) {
+.my-cube:nth-child(9) {
   animation-delay: 0.45s;
 }
     
@@ -83,7 +86,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="./css/index.css">
+
 
   <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
   <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
@@ -110,27 +113,41 @@
 <body>
   <nk-app>
     <my-app>
-      <div style="text-align:center;clear:both;">
+      <!--<div style="text-align:center;clear:both;">
       </div>
-      <div class="baseLoad">
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-      </div>
+      <div class="my-baseLoad">
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+      </div>-->
     </my-app>
   </nk-app>
 
-  <!--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<script src="../../config_js/jquery-3.1.1.min.js"></script>-->
+ 
+
+  <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
+	<!-- 配置文件 -->
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="../../config_js/ueditor.all.js"></script>
+	<!-- 实例化编辑器 -->
+	<script type="text/javascript" src="../../config_js/ueditor.config.js"></script>
+	<script type="text/javascript">
+	    var ue = UE.getEditor('container');
+	</script>
+  
   <script src="../../config_js/jquery-3.1.1.min.js"></script>
-  <script src="./config_js/bootstrap-3.3.7.min.js"></script>-->
+  <script src="../../config_js/bootstrap-3.3.7.min.js"></script>
   <script src="../build/index.js"></script>
-  <script src="../../config_js/jquery-3.1.1.min.js"></script>
+
+
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>-->
   <script src="../../config_js/chart.min.js"></script>
   <!--<script>

@@ -8,7 +8,7 @@ import { Tip } from '../../common/tip';
 import { TipService } from '../../services/tip.service';
 import { TodolistComponent } from '../todo_list.component/todo_list.component';
 @Component({
-  selector: 'add-tip',
+  selector: 'nk-profile',
   templateUrl: 'app/component/add_tip.component/add_tip.component.html'
 })
 
@@ -41,6 +41,6 @@ export class AddTipComponent implements OnInit {
   ngOnInit(): void {
     this.tipService.reNew().then(reNewTip => {
       this.addTip = new Tip;
-    });;
+    });
   }
 }

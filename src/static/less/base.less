@@ -10,8 +10,9 @@ body{
     padding: 0;
     background-color: @grey-white;
     min-width: 590px;
-    font-size: 12px;
-    /*overflow: hidden;*/
+    font-size: 14px;
+    min-width: 866px;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4{
@@ -44,7 +45,10 @@ a{
     width: 100%;
     height: 100%;
     display: inline-block;
-    text-decoration:none;
+    text-decoration:none !important;
+    &:focus{
+        color: @white;
+    }
 }
 
 button{
@@ -58,10 +62,26 @@ button{
     }
 }
 
+input{
+    border-radius: 2px;
+    border:1px solid @grey-black;
+    padding: 5px 10px; 
+}
+
+textarea{
+    border-radius: 2px;
+    border:1px solid @grey-black;
+    padding: 5px 10px; 
+}
+
 .add-tip-modal{
     .modal-body{
         padding-top: 0;
     }
+}
+
+label{
+    font-weight: normal !important;
 }
 
 div{

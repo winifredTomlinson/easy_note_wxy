@@ -19,44 +19,98 @@
                             <span class="quote">你的笔记管家</span>
                         </div>
                         <div class="sider-title">
-                            <span class="nav-font top-font" [ngClass]="{'active': currentOperate == '注册'}" data-hover="新建">新建</span>
+                            <div style="display:inline-block;" class="dropdown">
+                                <span class="nav-font top-font dropdown-toggle" data-toggle="dropdown" [ngClass]="{'active': currentOperate == '注册'}">
+                                    <i class="my-icon icon-plus-sign-alt"></i>
+                                    新建
+                                    <i class="my-icon icon-angle-down font-grey-light"></i>
+                                </span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">笔记</a></li>
+                                    <li><a href="#">Markdown</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">文件夹</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="sider-content">
-                            <li class="content-menu">
-                            <a href="javascript:;">我的文件夹</a>
-                                
-                            </li>
-                            <li class="content-menu">
-                            <a href="javascript:;">我的文件夹</a>
-                            </li>
-                        </div>
+                            <ul>
+                                <li class="content-menu" >
+                                    <a href="javascript:void(0);" class="menu-detail" (click)="setTreeOpen()" (click)="menuActive()">
+                                        <i class="my-icon icon-folder-close font-yellow"></i>
+                                        我的文件夹
+                                    </a>
+                                    <div style="text-align: center;">
+                                        <nk-tree [(value)]="value" [treeOpen]="treeOpen"></nk-tree>
+                                    </div>
+                                </li>
+                                <li class="content-menu">
+                                    <a href="javascript:void(0);" class="menu-detail" >
+                                        <i class="my-icon icon-heart font-red"></i>
+                                        浏览量统计
+                                    </a>
+                                </li>
+                                <li class="content-menu">
+                                    <a href="javascript:void(0);" class="menu-detail">
+                                        <i class="my-icon icon-trash font-grey"></i>
+                                        回收站
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> 
+
                     </div>
                     <!--<div class="content-right" id="contentRight">-->
-                        <div class="nav-file">
-                            <div class="top">
-                                <div class="menu-button" id="menuButton" (click)="toggleLeftMenu()" >
+                        <div class="view-port" id="viewPort">
+                            <div class="nav-file">
+                                <div class="top">
+                                    <div class="menu-button" ckucssa id="menuButton" (click)="toggleLeftMenu()" >
+                                        <ul>
+                                            <li class="menu-line"></li>
+                                            <li class="menu-line"></li>
+                                            <li class="menu-line"></li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="note-list">
                                     <ul>
-                                        <li class="menu-line"></li>
-                                        <li class="menu-line"></li>
-                                        <li class="menu-line"></li> 
+                                        <li *ngFor="let item of noteList" >
+                                            <span class="note-name">
+                                                <i class="my-icon icon-file-alt font-blue"></i>
+                                                {{item.name}}
+                                            </span>
+                                            <div class="note-abstract">{{item.abstract}}</div>
+                                            <div class="date-time">
+                                                <span class="file-date">{{item.createTime}}</span>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="sider-content">
-                                最近文档
-                            </div>
-                            <div class="sider-content">
-                                我的文件夹
-                            </div>
-                        </div>
-                        <div class="detail-container">
-                            <div class="top top-edit">
-                                profile
-                            </div>
-                            <div class="content-detail">
-                                <iframe id="iframe-for-ng1-page" frameborder="0"
-                                    scrolling="auto" style="width:100%;height:100%;" src="http://localhost:8080/favoriteNotes">
-                                </iframe>
+                            <div class="detail-container">
+                                <div class="top top-edit">
+                                    <div class="profile dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="my-icon icon-user font-grey-light" (click)="stopPrapation($event)"></i>
+                                            <i class="my-icon icon-angle-down font-grey-light"></i>
+                                        </div>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-toggle="modal" data-target="#myModal">个人信息</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">EJB</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">注销登陆</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <nk-profile></nk-profile>
+                                <div class="content-detail">
+                                    <!--<iframe id="iframe-for-ng1-page" frameborder="0"
+                                        scrolling="auto" style="width:100%;height:100%;" src="http://localhost:8080/favoriteNotes">
+                                    </iframe>-->
+                                    <router-outlet></router-outlet>                                
+                                </div>
                             </div>
                         </div>
                     <!--</div>-->

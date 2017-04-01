@@ -1,4 +1,4 @@
-<div class="add-tip-modal" *ngIf="addTip" >
+<!--<div class="add-tip-modal" *ngIf="addTip" >
 	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 </div>
-<script src="./jquery-3.1.1.min.js"></script>
+<script src="./jquery-3.1.1.min.js"></script>-->
 
 <!--<template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
@@ -52,3 +52,72 @@
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
   </div>
 </template>-->
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+				<h5 class="modal-title" id="myModalLabel">
+					个人信息
+				</h5>
+			</div>
+			<div class="modal-body">
+				<div class="user-infor">
+					<table>
+						<tr>
+							<td width="15%">头像</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>账号</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>昵称</td>
+							<td>
+								<div class="input-wraper">
+									<input type="text" name="" placeholder="">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>性别</td>
+							<td>
+								<span>
+									<label>
+										<input class="sex-input" type="radio" name="sex" value="">男
+									</label>
+									<label>
+										<input class="sex-input" type="radio" name="sex" value="">女
+									</label>
+									<label>
+										<input class="sex-input" type="radio" name="sex" value="">保密
+									</label>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td>签名</td>
+							<td>
+								<textarea type="text"></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+				<button type="button" class="btn btn-primary">
+                                                提交更改
+                                            </button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal -->
+</div>
