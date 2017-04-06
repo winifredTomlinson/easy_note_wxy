@@ -1,6 +1,6 @@
 //编辑页面component
 import 'rxjs/add/operator/switchMap';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
@@ -10,15 +10,14 @@ import { TipService } from '../../services/tip.service';
 // import { Ng2UeditorModule } from 'ng2-ueditor';
 declare var UE: any;
 @Component({
-  selector: 'ng2-ueditor',
+  // selector: 'ng2-ueditor',
   templateUrl: 'app/component/edit_tip.component/edit_tip.component.html',
 })
-export class EditTipComponent implements OnInit {
+export class EditTipComponent{
   // @Input() id:number;
   tips: Tip[] = [];
   tip: any;
   newTip: Tip;
-
 
   constructor(
     private tipService: TipService,
@@ -26,7 +25,9 @@ export class EditTipComponent implements OnInit {
     private location: Location,
     private localStorageService: LocalStorageService
 
-  ) { }
+  ) {
+      
+   }
 
 
   //编辑页面不保存功能
@@ -36,19 +37,24 @@ export class EditTipComponent implements OnInit {
     this.tipService.noSave(id, this.tip);
   }
 
-  //通过路由id获取tip
+  private showEditor(){
+  }
+
   ngOnInit(): void {
-    // let UE:any;
-    // var ue = UE.getEditor('container');
+    UE.getEditor('container');
+      let ue = UE.getEditor('container');
+        ue.ready( function() {
+          ue.setContent('<p>new text</p>');
+          console.log(ue.getContent());
+         } );
+      // console.log(ue.getContent());
+    //  let content = UE.getEditor('container').getContent()
+    //       console.log( UE.getEditor('container').getContent());
+    // this.ue.editor.setContent('<p>new text</p>', true);
+    
+  }
 
-
-    // this.route.params
-    //   .switchMap((params: Params) => this.tipService.getTip(+params['id']))
-    //   .subscribe(tip => {
-    //     this.tip = tip;
-    //     this.localStorageService.set('basic_tip', tip);
-    //     this.newTip = this.tip;
-    //     this.tip = tip;
-    //   });
+ ngOnDestroy() {
+    UE.getEditor('container').destroy();
   }
 }

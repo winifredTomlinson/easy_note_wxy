@@ -15,6 +15,7 @@ export class FileComponent implements OnInit{
   private configurationInfo: any = {};
   private PageSrc:any;
   private noteList: Array<any> = [];
+  private newFolder:boolean = false;
 
   //tree view
   private treeOpen: boolean = false;
@@ -71,6 +72,11 @@ export class FileComponent implements OnInit{
     // $('.menu-active').siblings().removeClass('menu-active');
   }
 
+  private addFolder(){
+    this.newFolder = !this.newFolder;
+    this.treeOpen = true;
+    return this.newFolder, this.treeOpen;
+  } 
   ngOnInit(): void {
     this.noteList = [{
       name: '前端笔记',
@@ -115,5 +121,7 @@ export class FileComponent implements OnInit{
     $(".icon-user").on('click', function(){
       $(this).attr('data-toggle', 'modal');
     });
+
+        // console.log($('.content-detail').offsetWidth);
   }
 }

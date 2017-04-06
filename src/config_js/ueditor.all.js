@@ -24560,6 +24560,8 @@ UE.plugin.register('simpleupload', function (){
             if (btnIframeBody.parentNode) {
                 btnIframeBody.parentNode.style.width = w + 'px';
                 btnIframeBody.parentNode.style.height = w + 'px';
+                console.log('========================');
+                console.log(w);
             }
 
             var form = btnIframeDoc.getElementById('edui_form_' + timestrap);

@@ -40,17 +40,25 @@ export class TreeComponent implements OnInit {
   @Input()
   private value: any;
 
+  @Input()
+  private newFolder: boolean = false;
+
   @Output()
   private valueChange: EventEmitter<any> = new EventEmitter();
 
   @Output()
   private itemClick: EventEmitter<any> = new EventEmitter();
 
+  // @Output()
+  // private addFolderItem: EventEmitter<any> = new EventEmitter();
+
   constructor() {
   }
 
   ngOnInit() {
     this.processTreeData(this.treeData || []);
+    // this.addFolderItem.emit(this.treeData);
+   
   }
 
   private processTreeData(arr: Array<any>) {
@@ -62,6 +70,14 @@ export class TreeComponent implements OnInit {
     });
   }
 
+  // private addFolderItem(){
+  //   if(this.newFolder){
+  //     this.treeData.push(
+  //       { text: '<input type="text" value="新建文件夹">', value: 4 }
+  //       );
+  //   }
+  // }
+
   ngOnChanges(changesObj:any) {
     if (changesObj.treeData) {
       this.processTreeData(this.treeData || []);
@@ -69,6 +85,7 @@ export class TreeComponent implements OnInit {
     if (changesObj.value) {
       this.setItemState();
     }
+    //  this.addFolderItem();
   }
 
   private setItemState() {

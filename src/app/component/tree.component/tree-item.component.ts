@@ -12,6 +12,9 @@ export class TreeItemComponent implements OnInit {
   @Input()
   private treeOpt: { showIcon: boolean, showCheckbox: boolean };
 
+  @Input()
+  private newFolder: boolean = false;
+
   @Output()
   private itemClick: EventEmitter<any> = new EventEmitter();
 

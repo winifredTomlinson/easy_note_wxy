@@ -28,10 +28,11 @@ const routes: Routes = [
 
   // { path: '', redirectTo: '/signin' , pathMatch: 'full'},
   { path: 'signin', component: SignInComponent },
+  // {path: 'edite', component: EditTipComponent},
   {
     path: '', component: FileComponent,
     children: [
-      { path: '', component: EditTipComponent },
+      { path: 'edite', component: EditTipComponent },
       { path: 'favoriteNotes', component: FavoriteComponent },
       // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
       // { path: 'todo_list', component: TodolistComponent },
