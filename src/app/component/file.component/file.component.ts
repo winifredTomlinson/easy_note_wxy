@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: 'app/component/file.component/file.component.html',
+  // styleUrls:['css/black-skin.css']
 })
 
 export class FileComponent implements OnInit{
@@ -16,14 +17,30 @@ export class FileComponent implements OnInit{
   private PageSrc:any;
   private noteList: Array<any> = [];
   private newFolder:boolean = false;
+  private skinColor:string = 'black';
 
   //tree view
   private treeOpen: boolean = false;
   private active: boolean = false;
+
+
+
+
+  //新建fileId
+  private newId: string;
+  private fileTitle: string;
+
+  private focusedIndex: number;
+  private fileTitleHide: boolean = false;
   constructor(
     // private noteAjax: NoteAjax,
     // private noteAuth: NoteAuth
   ) { }
+
+  private changeSkin(color: string){
+    this.skinColor = color;
+  }
+
   public toggleLeftMenu(){
     if(this.state=='open'){
       this.leftNav.style.paddingLeft = '0';
@@ -72,11 +89,28 @@ export class FileComponent implements OnInit{
     // $('.menu-active').siblings().removeClass('menu-active');
   }
 
+  private selectCal(){
+    this.fileTitleHide = true;
+  }
+
   private addFolder(){
     this.newFolder = !this.newFolder;
     this.treeOpen = true;
     return this.newFolder, this.treeOpen;
+  }
+
+  private itemSelect(index: any){
+    this.fileTitleHide = false;
+    this.focusedIndex = index;
   } 
+
+
+  private onNewFileId(){
+    this.fileTitleHide = false;
+    this.newId = '1';
+    this.fileTitle = '无标题笔记';
+    console.log(this.newId);
+  }
   ngOnInit(): void {
     this.noteList = [{
       name: '前端笔记',

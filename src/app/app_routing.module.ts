@@ -8,6 +8,7 @@ import { FavoriteComponent } from './component/favoriteNotes.component/favoriteN
 import { TodolistComponent } from './component/todo_list.component/todo_list.component';
 import { TipDetailComponent } from './component/tip_detail.component/tip_detail.component';
 import { EditTipComponent } from './component/edit_tip.component/edit_tip.component';
+import { EditMarkdownComponent } from './component/edit_markdown.component/edit_markdown.component';
 import { MoreOperationComponent } from './component/more_operation.component/more_operation.component';
 import { AddTipComponent } from './component/add_tip.component/add_tip.component';
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   {
     path: '', component: FileComponent,
     children: [
-      { path: 'edite', component: EditTipComponent },
+      { path: 'edite/:id', component: EditTipComponent },
+      { path: 'markdown', component: EditMarkdownComponent },
       { path: 'favoriteNotes', component: FavoriteComponent },
       // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
       // { path: 'todo_list', component: TodolistComponent },

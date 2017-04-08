@@ -16,7 +16,6 @@
     }
 }
 .top-font{
-    color: @white;
     width: 100%;
 }
  .menu-button{
@@ -86,12 +85,11 @@
     width: 240px;
     min-width: 210px;
     height: 100%;
-    background: @black;
+    /*background: @black;*/
     /*display: table-cell;*/
     position: absolute;
     left: 0;
     top: 0;
-    color: @white;
 }
 .view-port{
     /*position: absolute;*/
@@ -122,7 +120,6 @@
     padding: 10px 0;
     text-align: center;
     white-space: nowrap;
-    border-bottom: 1px solid @black-dark;
 }
 .sider-content{
     /*height: 60px;*/
@@ -139,24 +136,45 @@
     a{
         padding-left: 16px;
         border-left: 3px solid transparent;
-        color: @grey-white-light;
         box-sizing: border-box;
-        &.active{
-            border-left: @blue 3px solid;
-            color: @white;
-        }
-        &:hover{
-            border-left-color:@blue;
-            color: @white;
-            background: @black-deep;
-        }
     }
 }
 
 .menu-active{
     border-left-color: @blue !important;
-    color: @white;
-    background: @black-deep;
+}
+.file-title{
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    input{
+        width: 80%;
+        height: 100%;
+        background-color: transparent;
+        padding: 20px 0 21px 20px;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        border: none;
+        &:focus{
+           outline: none; 
+        }
+    }
+    .fileSave{
+        font-size: 14px;
+        padding: 3px 18px;
+        border: 1px solid @blue;
+        position: absolute;
+        top: 18px;
+        right: 25px;
+        &:hover{
+            border-color: @blue-grey;
+        }
+    }
 }
 .detail-container{
     position: relative;
@@ -170,7 +188,7 @@
 }
 .top-edit{
     text-align: right;
-    padding-right: 40px;
+    padding-right: 20px;
 }
 .note-list{
     position: absolute;
@@ -186,7 +204,10 @@
             float: left;
             width: 100%;
             height: 126px;
-            overflow: auto;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
             position: relative;
             margin: 0;
             padding: 15px 20px !important;
@@ -213,6 +234,10 @@
                 color: @white;
                 background-color: #526169;
             }
+        }
+        .li-active{
+            background-color: #48636f;
+            color: @white;
         }
     }
 }
@@ -410,8 +435,13 @@ canvas[pieChartLabels]{
     background: @blue-grey;
     cursor: pointer;
     display: inline-block;
+    vertical-align: middle;
     width: 70px;
     text-align: center;
+    i{
+        display: inline-block;
+        vertical-align: middle;
+    }
     .icon-user{
         font-size: 32px;
     }
@@ -429,5 +459,83 @@ canvas[pieChartLabels]{
     .sex-input{
         margin-top: 0;
         vertical-align: middle;
+    }
+}
+
+.skin-color{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 40px;
+    background: @blue-grey;
+    padding: 0 15px;
+    span{
+       display: inline-block;
+       vertical-align: middle;
+       width: 15px;
+       height: 15px;
+       margin: 0 7px;
+       border-radius: 3px;
+       -webkit-border-radius: 3px;
+       cursor: pointer; 
+    }
+    .skin-active{
+        border: 2px solid #9ddcfb;
+    }
+}
+
+//换肤
+.background-black{
+    color: @white;    
+    .content-menu{
+        a{
+            color: @grey-white-light;
+            &.active{
+                border-left: @blue 3px solid;
+                color: @white;
+            }
+            &:hover{
+                border-left-color:@blue;
+                color: @white;
+                background: @black-deep;
+            }
+        }
+    }
+    .top-font{
+        color: @white;        
+    }
+    .sider-title{
+        border-bottom: 1px solid @black-dark;
+    }
+    .menu-active{
+        color: @white;
+        background: @black-deep;
+    }
+}
+
+.background-grey{
+    color: @black-deep;    
+    .content-menu{
+        a{
+            color: @black;            
+            &.active{
+                border-left: @blue 3px solid;
+                color: @black;
+            }
+            &:hover{
+                border-left-color:@blue;
+                color: @white;
+                background: @grey-lighter;
+            }
+        }
+    }
+    .top-font{
+        color: @black-deep;        
+    }
+    .sider-title{
+        border-bottom: 1px solid #d4d4d4;
+    }
+    .menu-active{
+        color: @black;
+        background: @blue-grey;
     }
 }
