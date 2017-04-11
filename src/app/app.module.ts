@@ -16,7 +16,8 @@ import { TodolistComponent } from './component/todo_list.component/todo_list.com
 import { TipDetailComponent } from './component/tip_detail.component/tip_detail.component';
 import { EditTipComponent } from './component/edit_tip.component/edit_tip.component';
 import { EditMarkdownComponent } from './component/edit_markdown.component/edit_markdown.component';
-import { AddTipComponent } from './component/add_tip.component/add_tip.component';
+import { UserProfileComponent } from './component/modal.component/user_profile.component';
+import { AddFolderComponent } from './component/modal.component/add_folder.component';
 import { MoreOperationComponent } from './component/more_operation.component/more_operation.component';
 import { TreeComponent } from './component/tree.component/tree.component';
 import { TreeItemComponent } from './component/tree.component/tree-item.component';
@@ -52,7 +53,8 @@ let localStorageServiceConfig = {
     TipDetailComponent,
     EditTipComponent,
     EditMarkdownComponent,
-    AddTipComponent,
+    UserProfileComponent,
+    AddFolderComponent,
     MoreOperationComponent,
     TreeComponent,
     TreeItemComponent,

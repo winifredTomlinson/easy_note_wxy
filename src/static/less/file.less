@@ -212,10 +212,9 @@
             margin: 0;
             padding: 15px 20px !important;
             overflow: hidden;
-            border-bottom: 1px solid #545b5f;
-            color: @grey-white-light;
+            /*color: @grey-white-light;*/
             cursor: pointer;
-            background: @grey-deeper;            
+            /*background: @grey-deeper;            */
             .note-name{
                 display: inline-block;
                 width: 100%;
@@ -228,17 +227,17 @@
                 width: 100%;
                 height: 20px;
                 margin-top: 5px;
-                color: #999999;
+                /*color: #999999;*/
             }
-            &:hover{
+            /*&:hover{
                 color: @white;
                 background-color: #526169;
-            }
+            }*/
         }
-        .li-active{
+        /*.li-active{
             background-color: #48636f;
             color: @white;
-        }
+        }*/
     }
 }
 
@@ -448,6 +447,7 @@ canvas[pieChartLabels]{
 }
 
 .modal-body{
+    color: @black-deep;
     padding: 15px 55px !important;
     table{
         width: 100%;
@@ -484,58 +484,111 @@ canvas[pieChartLabels]{
 }
 
 //换肤
-.background-black{
-    color: @white;    
-    .content-menu{
-        a{
-            color: @grey-white-light;
-            &.active{
-                border-left: @blue 3px solid;
-                color: @white;
-            }
-            &:hover{
-                border-left-color:@blue;
-                color: @white;
-                background: @black-deep;
+.bk-black{
+    .nav-scroll{
+        color: @white;
+        background-color: @black;
+        .icon-angle-down{
+            color: @black-deep;
+        }    
+        .content-menu{
+            a{
+                color: @grey-white-light;
+                &.active{
+                    border-left: @blue 3px solid;
+                    color: @white;
+                }
+                &:hover{
+                    border-left-color:@blue;
+                    color: @white;
+                    background: @black-deep;
+                }
             }
         }
+        .top-font{
+            color: @white;        
+        }
+        .sider-title{
+            border-bottom: 1px solid @black-dark;
+        }
+        .menu-active{
+            color: @white;
+            background: @black-deep;
+            &:hover{
+                background: @black-deep;
+            }
+            
+        }
     }
-    .top-font{
-        color: @white;        
-    }
-    .sider-title{
-        border-bottom: 1px solid @black-dark;
-    }
-    .menu-active{
-        color: @white;
-        background: @black-deep;
+
+    //第二栏导航
+    .note-list{
+        li{
+            color: @grey-white-light;
+            background: @grey-deeper;
+            border-bottom: 1px solid #545b5f;            
+            &:hover{
+                color: @white;
+                background-color: #526169;
+            }
+        }
+        .li-active{
+            background-color: #48636f;
+            color: @white;
+        }   
     }
 }
 
-.background-grey{
-    color: @black-deep;    
-    .content-menu{
-        a{
-            color: @black;            
-            &.active{
-                border-left: @blue 3px solid;
-                color: @black;
+.bk-grey{
+    .nav-scroll{
+        color: @black-deep;
+        background:  #f3f1f1;
+         .icon-angle-down{
+            color: @grey-light;
+        }        
+        .content-menu{
+            a{
+                color: @black;            
+                &.active{
+                    border-left: @blue 3px solid;
+                    color: @black;
+                }
+                &:hover{
+                    border-left-color:@blue;
+                    color: @white;
+                    background: @grey-lighter;
+                }
             }
+        }
+        .top-font{
+            color: @black-deep;        
+        }
+        .sider-title{
+            border-bottom: 1px solid #d4d4d4;
+        }
+        .menu-active{
+            color: @white;
+            background: @blue-grey;
             &:hover{
-                border-left-color:@blue;
-                color: @white;
-                background: @grey-lighter;
+                background: @blue-grey;
             }
         }
     }
-    .top-font{
-        color: @black-deep;        
-    }
-    .sider-title{
-        border-bottom: 1px solid #d4d4d4;
-    }
-    .menu-active{
-        color: @black;
-        background: @blue-grey;
+
+//第二栏导航
+    .note-list{
+        li{
+            color: @black;
+            background-color: @white;
+            border-bottom: 1px solid @black-light;
+            &:hover{
+                color: @black;
+                background-color: @grey-light;
+            }
+        }
+        .li-active{
+            color: @black;
+            background-color: @grey-white-light;
+        }   
     }
 }

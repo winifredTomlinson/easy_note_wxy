@@ -9,11 +9,11 @@ import { TipService } from '../../services/tip.service';
 import { TodolistComponent } from '../todo_list.component/todo_list.component';
 @Component({
   selector: 'nk-profile',
-  templateUrl: 'app/component/add_tip.component/add_tip.component.html'
+  templateUrl: 'app/component/modal.component/user_profile.component.html'
 })
 
 // 定义添加页面的component
-export class AddTipComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   // @Input() notice:boolean;
   tips: Tip[] = [];
   addTip: Tip;

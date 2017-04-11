@@ -1,0 +1,63 @@
+<div class="modal fade addFolder" id="addFolderModal" tabindex="-1" role="dialog" aria-labelledby="addFolderModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+				<h5 class="modal-title" id="addFolderModalLabel">
+					新建文件夹
+				</h5>
+			</div>
+			<div class="modal-body">
+                <table>
+                    <tr>
+                        <td width="40%">文件名</td>
+                        <td><input id="folderNameInput" type="text" name="" value=""></td>
+                    </tr>
+                    <tr *ngIf="!hasFileName">
+                        <td width="40%"></td>
+                        <td><span class="font-red-light">文件名不能为空</span></td>
+                    </tr>
+                    <tr>
+                        <td>设置阅读密码：</td>
+                        <td>
+                            <input id="checkPassword" type="checkbox" name="checkbox" [(ngModel)]="checked" value="">
+                        </td>
+                    </tr>
+                    <tr *ngIf="checked" >
+                        <td>密码：</td>
+                        <td><input id="passwordInput" type="password" name="" value="" [(ngModel)]="value" (blur)="hasSetPassword()"></td>
+                    </tr>
+                    <tr *ngIf="!passwordValid">
+                        <td width="40%"></td>
+                        <td><span class="font-red-light">密码不能为空</span></td>
+                    </tr>
+                    <tr *ngIf="checked">
+                        <td>确认密码：</td>
+                        <td><input id="confirmPasswordInput" type="password" name="" value="" [(ngModel)]="confirmValue" (blur)="confirmPasswordValid()"></td>
+                    </tr>
+                    <tr *ngIf="!hasSamePassword">
+                        <td width="40%"></td>
+                        <td><span class="font-red-light">两次密码不一致</span></td>
+                    </tr>
+                    <tr>
+                        <td>描述</td>
+                        <td>
+                            <textarea type="text"></textarea>
+                        </td>
+                    </tr>
+                </table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+				<button type="button" class="btn btn-primary" (click)="saveFolderInfo()">
+                                                保存
+                                            </button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal -->
+</div>

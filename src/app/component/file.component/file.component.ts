@@ -94,7 +94,7 @@ export class FileComponent implements OnInit{
   }
 
   private addFolder(){
-    this.newFolder = !this.newFolder;
+    this.newFolder = true;
     this.treeOpen = true;
     return this.newFolder, this.treeOpen;
   }

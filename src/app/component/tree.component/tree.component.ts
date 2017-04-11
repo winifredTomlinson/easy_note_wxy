@@ -9,20 +9,20 @@ export class TreeComponent implements OnInit {
   private treeData = [
     {
       text: '来自手机', value: 1, icon: 'fa fa-user', children: [
-        { text: 'Level2 - Item1', value: 11, icon: 'fa fa-lock' },
-        { text: 'Level2 - Item2', value: 12 },
+        { text: '工作', value: 11, icon: 'fa fa-lock' },
+        { text: '娱乐', value: 12 },
         {
           text: '技术', value: 13, children: [
-            { text: 'Level3 - Item1', value: 131 },
+            { text: '后端', value: 131 },
             { text: '前端', value: 132, children: [
-               { text: 'Level4 - Item1', value: 1321 },
+               { text: 'Angular 2', value: 1321 },
             ] },
           ]
         }
       ]
     },
-    { text: 'Text2 - Level1', value: 2 },
-    { text: 'Text3 - Level1', value: 3 }
+    { text: '学习资料', value: 2 },
+    { text: '影评', value: 3 }
   ];
 
   @Input()
@@ -113,10 +113,9 @@ export class TreeComponent implements OnInit {
   //   item = item.item;
   //   $event = item.$event;
   //  $event && $event.stopPropagation();
-    if (item.hasChildren) {
+    // if (item.hasChildren) {
       item.open = !item.open;
-      console.log('aaaaaaaaaaa');
-    } else {
+    // } else {
       let selected = !item.selected;
       if (this.single) {
         this.cancelAllItemSelect(this.treeData);
@@ -131,10 +130,8 @@ export class TreeComponent implements OnInit {
         // selected ? this.value.push(item.value) : this.negUtil.remove(this.value, item.value);
         this.valueChange.emit(this.value);
       }
-    }
+    // }
     this.itemClick.emit(item);
-        // console.log($event);
-    console.log(item);
   }
 
 

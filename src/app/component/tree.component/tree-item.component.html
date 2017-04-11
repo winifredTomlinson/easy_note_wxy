@@ -1,10 +1,9 @@
-<ng-template [ngIf]="!treeItem.hasChildren && newFolder">
-  <span class="tree-label">{{treeItem.text}}</span>
+<ng-template [ngIf]="!treeItem.hasChildren">
+  <span class="tree-branch-name">
+    <i class="my-icon" [ngClass]="{'icon-folder-close-alt': !treeItem.open, 'icon-folder-open-alt': treeItem.open}"></i>
+    {{treeItem.text}}
+  </span>
   <!--<span class="tree-label" [ngIf]="newFolder"><input type="text" name="" value="新建文件夹"></span>-->
-</ng-template>
-
-<ng-template [ngIf]="!treeItem.hasChildren && !newFolder">
-  <span class="tree-label"><input type="text" name="" value="新建文件夹"></span>
 </ng-template>
 
 <!-- 有子集的场景 -->

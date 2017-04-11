@@ -11,10 +11,10 @@
                 </ul>
             </div>
         </div>-->
-        <div class="main-container">
+        <div class="main-container" [ngClass]="{'bk-black': skinColor == 'black', 'bk-grey': skinColor == 'grey'}">
             <!--<div class="index-main-body">-->
                 <div class="index-body">
-                    <div class="nav-scroll" [ngClass]="{'background-black': skinColor == 'black', 'background-grey': skinColor == 'grey'}"  id="leftNav">
+                    <div class="nav-scroll"  id="leftNav">
                         <div class="top top-left">
                             <span class="quote">你的笔记管家</span>
                         </div>
@@ -23,16 +23,17 @@
                                 <span class="nav-font top-font dropdown-toggle" data-toggle="dropdown" [ngClass]="{'active': currentOperate == '注册'}">
                                     <i class="my-icon icon-plus-sign-alt"></i>
                                     新建
-                                    <i class="my-icon icon-angle-down font-grey-light"></i>
+                                    <i class="my-icon icon-angle-down"></i>
                                 </span>
                                 <ul class="dropdown-menu">
                                     <li [routerLink]="['/edite', newId]"><a (click)="onNewFileId()">笔记</a></li>
                                     <li [routerLink]="['/markdown']" ><a (click)="onNewFileId()">Markdown</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:void(0);" (click)="addFolder()">文件夹</a></li>
+                                    <li><a data-toggle="modal" data-target="#addFolderModal">文件夹</a></li>
                                 </ul>
                             </div>
                         </div>
+                        <nk-add-folder></nk-add-folder>
                         <div class="sider-content">
                             <ul>
                                 <li class="content-menu" >
