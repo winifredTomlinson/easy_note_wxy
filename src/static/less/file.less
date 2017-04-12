@@ -140,9 +140,9 @@
     }
 }
 
-.menu-active{
+/*.menu-active{
     border-left-color: @blue !important;
-}
+}*/
 .file-title{
     width: 100%;
     height: 60px;
@@ -338,18 +338,6 @@ canvas[pieChartLabels]{
             -moz-transition: color 0.2s ease 0.1s, background-color 0.2s ease 0.1s, border-color 0.3s ease 0.2s;
             -o-transition: color 0.2s ease 0.1s, background-color 0.2s ease 0.1s, border-color 0.3s ease 0.2s;
             transition: color 0.2s ease 0.1s, background-color 0.2s ease 0.1s, border-color 0.3s ease 0.2s;
-        &:hover{
-            color: @white;
-            }
-        }
-
-        &:hover{
-            &::before{
-                border-color: @white;
-            } 
-            &::after{
-                border-color: @white;
-            } 
         }
         &:last-child{
             &::before{
@@ -476,35 +464,21 @@ canvas[pieChartLabels]{
        margin: 0 7px;
        border-radius: 3px;
        -webkit-border-radius: 3px;
-       cursor: pointer; 
-    }
-    .skin-active{
-        border: 2px solid #9ddcfb;
+       cursor: pointer;
+       border: 2px solid; 
     }
 }
 
 //换肤
 .bk-black{
+     .skin-color{
+        span{
+            border-color: @grey-light;
+        }
+     }
     .nav-scroll{
         color: @white;
-        background-color: @black;
-        .icon-angle-down{
-            color: @black-deep;
-        }    
-        .content-menu{
-            a{
-                color: @grey-white-light;
-                &.active{
-                    border-left: @blue 3px solid;
-                    color: @white;
-                }
-                &:hover{
-                    border-left-color:@blue;
-                    color: @white;
-                    background: @black-deep;
-                }
-            }
-        }
+        background-color: @black;   
         .top-font{
             color: @white;        
         }
@@ -514,11 +488,49 @@ canvas[pieChartLabels]{
         .menu-active{
             color: @white;
             background: @black-deep;
+            border-left-color: @blue;
             &:hover{
                 background: @black-deep;
             }
             
         }
+    }
+
+    .content-menu{
+        a{
+            color: @grey-white-light;
+            &:hover{
+                border-left-color:@blue;
+                color: @white;
+                background: @black-deep;
+            }
+             &:active{
+                border-left: @blue 3px solid;
+                color: @white;
+            }
+        }
+    }
+
+    .tree{
+        li{
+            span{
+                &:hover{
+                    color: @white;
+                }
+            }
+        &:hover{
+            &::before{
+                border-color: @white;
+            } 
+            &::after{
+                border-color: @white;
+            } 
+        }
+        }
+    }
+
+    .tree-selected{
+        color: @white;
     }
 
     //第二栏导航
@@ -540,39 +552,62 @@ canvas[pieChartLabels]{
 }
 
 .bk-grey{
+    .skin-color{
+        span{
+            border-color: @black;
+        }
+     }
     .nav-scroll{
         color: @black-deep;
-        background:  #f3f1f1;
-         .icon-angle-down{
-            color: @grey-light;
-        }        
-        .content-menu{
-            a{
-                color: @black;            
-                &.active{
-                    border-left: @blue 3px solid;
-                    color: @black;
-                }
-                &:hover{
-                    border-left-color:@blue;
-                    color: @white;
-                    background: @grey-lighter;
-                }
-            }
-        }
+        background:  #f3f1f1;        
+
         .top-font{
             color: @black-deep;        
         }
         .sider-title{
             border-bottom: 1px solid #d4d4d4;
         }
-        .menu-active{
-            color: @white;
-            background: @blue-grey;
+
+    .content-menu{
+        a{
+            color: @black;            
             &:hover{
-                background: @blue-grey;
+                border-left-color:@blue;
+                color: @black;
+                background: @grey-lighter;
             }
         }
+    }
+        .menu-active{
+            color: @white !important;
+            background: @blue;
+            border-left-color: @blue-grey;
+            &:hover{
+                background: @blue;
+            }
+        }
+    }
+
+    .tree{
+        li{
+            span{
+                &:hover{
+                    color: @black-dark;
+                }
+            }
+        &:hover{
+            &::before{
+                border-color: @black;
+            } 
+            &::after{
+                border-color: @black;
+            } 
+        }
+        }
+    }
+
+    .tree-selected{
+        color: @black;
     }
 
 //第二栏导航
@@ -580,7 +615,7 @@ canvas[pieChartLabels]{
         li{
             color: @black;
             background-color: @white;
-            border-bottom: 1px solid @black-light;
+            border-bottom: 1px solid #d4d4d4;
             &:hover{
                 color: @black;
                 background-color: @grey-light;

@@ -33,16 +33,16 @@
                                 </ul>
                             </div>
                         </div>
-                        <nk-add-folder></nk-add-folder>
+                        <nk-add-folder (newFolder)="addNewfolder($event)"></nk-add-folder>
                         <div class="sider-content">
                             <ul>
                                 <li class="content-menu" >
-                                    <a href="javascript:void(0);" class="menu-detail" (click)="setTreeOpen()" (click)="menuActive()">
+                                    <a href="javascript:void(0);" class="menu-detail" (click)="setTreeOpen()">
                                         <i class="my-icon icon-folder-close font-yellow"></i>
                                         我的文件夹
                                     </a>
                                     <div style="text-align: center;">
-                                        <nk-tree [(value)]="value" [treeOpen]="treeOpen" [newFolder]="newFolder" ></nk-tree>
+                                        <nk-tree [(value)]="value" [treeData]="treeData" [treeOpen]="treeOpen" [newFolder]="newFolder" ></nk-tree>
                                     </div>
                                 </li>
                                 <li class="content-menu">
@@ -92,7 +92,7 @@
                                 <div class="top top-edit">
                                     <div class="profile dropdown">
                                         <div class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="my-icon icon-user font-grey-light" (click)="stopPrapation($event)"></i>
+                                            <i class="my-icon icon-user font-grey-light" data-toggle="modal" data-target="#myModal" (click)="stopPrapation($event)"></i>
                                             <i class="my-icon icon-angle-down font-grey-light"></i>
                                         </div>
                                         <ul class="dropdown-menu">
@@ -105,8 +105,8 @@
                                         </ul>
                                     </div>
                                     <div class="skin-color">
-                                        <span class="background-black" [class.skin-active]="skinClor == 'black'" (click)="changeSkin('black')"></span>
-                                        <span class="background-grey" [class.skin-active]="skinClor == 'grey'" (click)="changeSkin('grey')"></span>
+                                        <span class="background-black" [class.skin-black-active]="skinClor == 'black'" (click)="changeSkin('black')"></span>
+                                        <span class="background-grey" [class.skin-grey-active]="skinClor == 'grey'" (click)="changeSkin('grey')"></span>
                                     </div>
                                 </div>
                                 <nk-profile></nk-profile>

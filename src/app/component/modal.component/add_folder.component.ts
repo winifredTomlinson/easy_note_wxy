@@ -1,6 +1,6 @@
 //新建文件夹
 
-import { Component, Input, OnInit,forwardRef, ElementRef } from '@angular/core';
+import { Component, Input,Output,EventEmitter, OnInit, OnDestroy, forwardRef, ElementRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalBackdrop } from '../../common/modal_backdrop';
 import { MaterialModule } from '@angular/material';
@@ -29,6 +29,11 @@ export class AddFolderComponent implements OnInit {
   private samePassword: boolean = true;
   private value: any;
   private confirmValue:any;
+
+
+
+  @Output()
+  private newFolder: EventEmitter<string> = new EventEmitter();
   constructor(
     private tipService: TipService,
     private modalService: NgbModal,
@@ -47,17 +52,41 @@ export class AddFolderComponent implements OnInit {
 
   // 关闭按钮
   close() {
-    this.notice = false;
-    this.addTip = new Tip;
+    this.checked = false;
+    this.folderNameInput.value = '';
+  }
+
+  private confirmPasswordValid(){
+    // if(!this.confirmValue === $('#passwordInput').value){
+    //   console.log(this.confirmValue);
+    //       console.log('cccccccccccccccccccccccccccc');
+    //       this.samePassword = false;
+    //   }else{
+    //     console.log(this.confirmValue);
+    //       this.samePassword = true;
+    //       console.log('dddddddddddddddddddddddddddddddddd');
+    //   }
+    if(this.confirmValue == this.value){
+      this.samePassword = true;
+    }else{
+      this.samePassword = false;
+    }
   }
 
   private saveFolderInfo(){
-      if(!this.folderNameInput.value){
+      if(this.checked){
+        this.hasSetPassword();
+        this.confirmPasswordValid();
+      }
+      if(!this.folderNameInput.value || !this.passwordValid || !this.samePassword){
+        $('#saveButton').attr('data-dismiss', '');
           this.hasFileName = false;
       }else{
         this.hasFileName = true;
+        this.newFolder.next(this.folderNameInput.value);
+        this.checked = false;
+         $('#saveButton').attr('data-dismiss', 'modal');
       }
-      // this.newFolderName = this.folderNameInput.value;
   }
 
   private hasSetPassword(){
@@ -70,16 +99,6 @@ export class AddFolderComponent implements OnInit {
     //   this.passwordValid = !this.passwordValue : false ? true;
   }
 
-    private confirmPasswordValid(){
-      console.log(this.confirmValue === this.value);
-        
-       if(!this.confirmValue === this.value){
-          this.samePassword = false;
-      }else{
-          this.samePassword = true;
-      }
-  }
-
   // 初始化时tip信息为空
   ngOnInit(): void {
     this.folderNameInput = document.getElementById('folderNameInput');
@@ -90,8 +109,11 @@ export class AddFolderComponent implements OnInit {
   }
 
    ngOnChanges(changesObj: any) {
-        this.checked = true;
+        this.checked = changesObj.checked;          
         this.value = changesObj.value;
         this.confirmValue = changesObj.confirmValue;
   }
+  // ngOnDestroy(changesObj: any) {
+  //       this.checked = false;
+  // }
 }

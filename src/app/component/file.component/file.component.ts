@@ -20,8 +20,27 @@ export class FileComponent implements OnInit{
   private skinColor:string = 'black';
 
   //tree view
+  private treeData = [
+    {
+      text: '来自手机', value: 1, icon: 'fa fa-user', children: [
+        { text: '工作', value: 11, icon: 'fa fa-lock' },
+        { text: '娱乐', value: 12 },
+        {
+          text: '技术', value: 13, children: [
+            { text: '后端', value: 131 },
+            { text: '前端', value: 132, children: [
+               { text: 'Angular 2', value: 1321 },
+            ] },
+          ]
+        }
+      ]
+    },
+    { text: '学习资料', value: 2 },
+    { text: '影评', value: 3 }
+  ];
   private treeOpen: boolean = false;
   private active: boolean = false;
+  
 
 
 
@@ -57,6 +76,14 @@ export class FileComponent implements OnInit{
     console.log(this.menuButton.className);
       
     }
+  }
+  
+  private addNewfolder(name: any){
+    let folderObj = {
+      text: name,
+      value: 3
+    }
+    this.treeData.push(folderObj);
   }
 
    public createNote() {

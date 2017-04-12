@@ -6,24 +6,8 @@ import { Component, OnInit, Input, Output, ElementRef, AfterViewInit, OnChanges,
 })
 export class TreeComponent implements OnInit {
 
-  private treeData = [
-    {
-      text: '来自手机', value: 1, icon: 'fa fa-user', children: [
-        { text: '工作', value: 11, icon: 'fa fa-lock' },
-        { text: '娱乐', value: 12 },
-        {
-          text: '技术', value: 13, children: [
-            { text: '后端', value: 131 },
-            { text: '前端', value: 132, children: [
-               { text: 'Angular 2', value: 1321 },
-            ] },
-          ]
-        }
-      ]
-    },
-    { text: '学习资料', value: 2 },
-    { text: '影评', value: 3 }
-  ];
+  @Input()
+  private treeData: any;
 
   @Input()
   private treeOpen: boolean = false;

@@ -80,16 +80,20 @@
 							<td>昵称</td>
 							<td>
 								<div class="input-wraper">
-									<input type="text" name="" placeholder="">
+									<input id="nicknameInput" type="text" name="" placeholder="">
 								</div>
 							</td>
 						</tr>
+						<tr *ngIf="!nicknameValid">
+                        	<td width="15%"></td>
+                        	<td><span class="font-red-light">昵称不能为空</span></td>
+                    	</tr>
 						<tr>
 							<td>性别</td>
 							<td>
 								<span>
 									<label>
-										<input class="sex-input" type="radio" name="sex" value="">男
+										<input class="sex-input" type="radio" name="sex" value="" checked>男
 									</label>
 									<label>
 										<input class="sex-input" type="radio" name="sex" value="">女
@@ -112,7 +116,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                             </button>
-				<button type="button" class="btn btn-primary">
+				<button id="saveButton" type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveProfile()">
                                                 提交更改
                                             </button>
 			</div>

@@ -18,6 +18,8 @@ export class UserProfileComponent implements OnInit {
   tips: Tip[] = [];
   addTip: Tip;
   notice: boolean;
+
+  private nicknameValid:boolean = true;
   constructor(
     private tipService: TipService,
     private modalService: NgbModal,
@@ -35,6 +37,15 @@ export class UserProfileComponent implements OnInit {
   close() {
     this.notice = false;
     this.addTip = new Tip;
+  }
+
+  private saveProfile(){
+    if($('#nicknameInput').value){
+      $('#saveButton').attr('data-dismiss', '');
+      this.nicknameValid = false;
+    }else{
+      this.nicknameValid = true;
+    }
   }
 
   // 初始化时tip信息为空
