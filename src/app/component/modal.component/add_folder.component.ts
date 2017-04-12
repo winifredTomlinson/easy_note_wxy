@@ -26,7 +26,7 @@ export class AddFolderComponent implements OnInit {
 //   private confirmPasswordInput: any;
   private hasFileName: boolean = true;
   private passwordValid: boolean = true;
-  private hasSamePassword: boolean = true;
+  private samePassword: boolean = true;
   private value: any;
   private confirmValue:any;
   constructor(
@@ -54,7 +54,10 @@ export class AddFolderComponent implements OnInit {
   private saveFolderInfo(){
       if(!this.folderNameInput.value){
           this.hasFileName = false;
+      }else{
+        this.hasFileName = true;
       }
+      // this.newFolderName = this.folderNameInput.value;
   }
 
   private hasSetPassword(){
@@ -68,12 +71,12 @@ export class AddFolderComponent implements OnInit {
   }
 
     private confirmPasswordValid(){
-      console.log(this.confirmValue);
+      console.log(this.confirmValue === this.value);
         
        if(!this.confirmValue === this.value){
-          this.hasSamePassword = false;
+          this.samePassword = false;
       }else{
-          this.hasSamePassword = true;
+          this.samePassword = true;
       }
   }
 

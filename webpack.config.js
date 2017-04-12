@@ -9,12 +9,12 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 module.exports = {
   //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
   entry: [
-    'webpack-dev-server/client?http://127.0.0.1:8080/',//资源服务器地址
+    'webpack-dev-server/client?http://localhost:8080/',//资源服务器地址
     'webpack/hot/only-dev-server',
     './src/main.ts'],
   //输出的文件名 合并以后的js会命名为index.js
   output: {
-    publicPath: "http://127.0.0.1:8080/build/",
+    publicPath: "http://localhost:8080/build/",
     path: BUILD_PATH,
     filename: 'index.js'
   },

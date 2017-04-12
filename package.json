@@ -5,15 +5,15 @@
   "main": "index.js",
   "types": "./src/declare.d.ts",
   "dependencies": {
-    "@angular/common": "~2.2.0",
-    "@angular/compiler": "~2.2.0",
-    "@angular/core": "~2.2.0",
-    "@angular/forms": "~2.2.0",
-    "@angular/http": "~2.2.0",
+    "@angular/common": "4.0.0-rc.4",
+    "@angular/compiler": "4.0.0-rc.4",
+    "@angular/core": "4.0.0-rc.4",
+    "@angular/forms": "4.0.0-rc.4",
+    "@angular/http": "4.0.0-rc.4",
     "@angular/material": "^2.0.0-alpha.10",
-    "@angular/platform-browser": "~2.2.0",
-    "@angular/platform-browser-dynamic": "~2.2.0",
-    "@angular/router": "~3.2.0",
+    "@angular/platform-browser": "4.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "4.0.0-rc.4",
+    "@angular/router": "4.0.0-rc.4",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.14",
     "angular-2-local-storage": "^1.0.0",
     "angular-in-memory-web-api": "~0.1.15",
@@ -22,6 +22,7 @@
     "gulp-less": "^3.3.0",
     "ng2-charts": "^1.5.0",
     "ng2-nvd3": "^1.1.3",
+    "ng2-ueditor": "^1.0.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.40",
@@ -29,6 +30,7 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
+    "angular2-template-loader": "0.6.2",
     "babel-loader": "^6.2.8",
     "babel-preset-es2015": "^6.18.0",
     "gulp": "^3.9.1",
@@ -50,7 +52,7 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "gulp | gulp fonts | gulp copy-html | gulp config_js | gulp component_html | webpack | webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./build",
+    "dev": "gulp | gulp fonts | gulp css | gulp ueditor | gulp copy-html | gulp config_js | gulp config_js_rely | gulp config_js_image | gulp config_static_js | gulp component_html | webpack | webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./build",
     "build": "webpack --progress --colors",
     "lint": "tslint \"src/**/*.ts\" -t verbose",
     "clean": "npm run rimraf -- dist"
