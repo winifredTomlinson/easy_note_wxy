@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <nk-add-folder (newFolder)="addNewfolder($event)"></nk-add-folder>
-                        <div class="sider-content">
+                        <div class="sider-content dropdown" id="addContent">
                             <ul>
                                 <li class="content-menu" >
                                     <a href="javascript:void(0);" class="menu-detail" (click)="setTreeOpen()">
@@ -51,12 +51,16 @@
                                         浏览量统计
                                     </a>
                                 </li>
-                                <li class="content-menu">
+                                <li class="content-menu dropdown-toggle" id="trashBox" data-toggle="dropdown">
                                     <a href="javascript:void(0);" class="menu-detail">
                                         <i class="my-icon icon-trash font-grey"></i>
                                         回收站
                                     </a>
                                 </li>
+                                    <ul class="dropdown-menu">
+                                        <li [routerLink]="['/edite', newId]"><a (click)="onNewFileId()" >清空回收站</a></li>
+                                        <li [routerLink]="['/markdown']" ><a (click)="onNewFileId()">全部恢复</a></li>
+                                    </ul>
                             </ul>
                         </div> 
 
@@ -74,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="note-list">
-                                    <ul>
+                                    <!--<ul>
                                         <li *ngFor="let item of noteList,let i = index" [routerLink]="['/edite', i]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
                                             <span class="note-name">
                                                 <i class="my-icon icon-file-alt font-blue"></i>
@@ -85,15 +89,30 @@
                                                 <span class="file-date">{{item.createTime}}</span>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul>-->
+                                    <div class="lock-detail">
+                                        <div class="lock-input">
+                                            <input type="password" name="" value="" placeholder="请输入密码">
+                                            <span class="lock-icon-content">
+                                                <i class="my-icon icon-lock"></i>
+                                            </span>
+                                            <div class="lock-tip">
+                                                <span class="cancel-read-password" data-toggle="modal" data-target="#cancelPasswordModal">取消阅读密码</span>
+                                                <span class="forget-read-password">
+                                                    <a href="">忘记密码</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <nk-cancel-password></nk-cancel-password>
                                 </div>
                             </div>
                             <div class="detail-container">
                                 <div class="top top-edit">
                                     <div class="profile dropdown">
-                                        <div class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="my-icon icon-user font-grey-light" data-toggle="modal" data-target="#myModal" (click)="stopPrapation($event)"></i>
-                                            <i class="my-icon icon-angle-down font-grey-light"></i>
+                                        <div class="">
+                                            <i class="my-icon icon-user font-grey-light" data-toggle="modal" data-target="#myModal"></i>
+                                            <i class="my-icon icon-angle-down font-grey-light dropdown-toggle" data-toggle="dropdown"></i>
                                         </div>
                                         <ul class="dropdown-menu">
                                             <li><a data-toggle="modal" data-target="#myModal">个人信息</a>
@@ -114,10 +133,15 @@
                                     <!--<iframe id="iframe-for-ng1-page" frameborder="0"
                                         scrolling="auto" style="width:100%;height:100%;" src="http://localhost:8080/favoriteNotes">
                                     </iframe>-->
-                                        <div class="file-title" [class.div-hidden]="fileTitleHide">
-                                            <input type="text" name="" value="" [(ngModel)]="fileTitle">
-                                            <button class="fileSave">保存</button>
-                                        </div>
+
+
+                                    <!--<div class="file-title" [class.div-hidden]="fileTitleHide">
+                                        <input type="text" name="" value="" [(ngModel)]="fileTitle">
+                                        <button class="fileSave">保存</button>
+                                    </div>-->
+                                    <div class="lock-content">
+                                        <i class="icon-pencil"></i>
+                                    </div>
                                     <router-outlet></router-outlet>                                
                                 </div>
                             </div>

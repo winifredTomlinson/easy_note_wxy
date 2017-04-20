@@ -241,12 +241,81 @@
     }
 }
 
+.lock-detail{
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    &::after{
+        content: '';
+        height: 100%;
+        width: 0;
+        display: inline-block;
+    }
+}
+.lock-input{
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    input{
+        display: inline-block;
+        vertical-align: middle;
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        color: @grey-deep !important;
+    }
+}
+.lock-icon-content{
+    float: right;
+    width: 32px;
+    height: 32px;
+    background: @blue-grey;
+    border-radius: 0px;
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+    i{
+        font-size: 18px;
+        color: @white;
+    }
+}
+.lock-tip{
+    margin-top: 15px;
+    color: @blue;
+    .cancel-read-password{
+        float: left;
+        cursor: pointer;
+    }
+    .forget-read-password{
+        float: right;
+    }
+}
+
 .content-detail{
     position: absolute;
     top: 50px;
     bottom: 0;
     width: 100%;
     overflow: auto;
+}
+
+.lock-content{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    &::after{
+        content: '';
+        height: 100%;
+        width: 0;
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+    }
+    .icon-pencil{
+        font-size: 48px;
+        color: @blue-grey;
+        display: inline-block;
+        vertical-align: middle;
+    }
 }
 
 /*.detail-content{
@@ -450,6 +519,10 @@ canvas[pieChartLabels]{
     }
 }
 
+.cancel-modal-body{
+    padding: 15px 197px !important;
+}
+
 .skin-color{
     display: inline-block;
     vertical-align: middle;
@@ -548,6 +621,9 @@ canvas[pieChartLabels]{
             background-color: #48636f;
             color: @white;
         }   
+    }
+    .lock-detail{
+        background: @grey-deeper;
     }
 }
 

@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Router, CanActivate, CanLoad, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from './';
 
 @Injectable()
+@Component({
+  providers: [AuthService],
+})
+
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(
@@ -12,11 +16,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot, isChild = false): Promise<boolean> {
-    let moduleName = state.url.split('/')[1];
+    // let moduleName = state.url.split('/')[1];
     // if(!isChild && moduleName){
     //   this.negModuleLoader.useModuleStyles(moduleName);
     // }
     return this.authService.requireAuth(state, route, this.router, isChild);
+        
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {

@@ -1,7 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
+@Component({
+  providers: [Http]
+  // templateUrl: 'app/component/sign_in.component/sign_in.component.html',
+})
 export class NoteAjax {
 
   constructor(private http: Http) {
@@ -42,6 +47,7 @@ export class NoteAjax {
     let reqOptions = new RequestOptions({
       headers: headers
     });
+    console.log(reqOptions.headers);
     return reqOptions;
   }
 
@@ -64,11 +70,39 @@ export class NoteAjax {
         throw new Error('Not Supported Method');
     }
     return p.toPromise()
-      // .then(res => {
-      //   return res;
-      // }).catch(err => {
-      //   this._handlerError(err);
-      //   return Promise.reject(err);
-      // });
+      .then((data: any) => {
+        // if (true) {
+        //   // this.requestCount -= 1;
+        //   // this._processLoading();
+          return data;
+        // }
+
+        // return {
+        //   //  data: this._tryGetJsonData(res), res
+        //   };
+      }).catch(
+        () => {
+          console.log('kkkkkkkkkkkkkkkkkkkkkkkk');    
+        }
+        // errRes => {
+        //   if (!options.hideLoading) {
+        //     this.requestCount -= 1;
+        //     this._processLoading();
+        //   }
+        //   if (!options.useCustomErrorHander) {
+        //     this._handlerError(errRes);
+        //   }
+        //   return Promise.reject(errRes);
+        // }
+      );
   }
+
+      _tryGetJsonData(res: any) {
+      try {
+        return res.json();
+      } catch (ex) {
+        return res.text();
+      }
+    }
+
 };

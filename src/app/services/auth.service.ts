@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { NoteAuth, NoteAjax, NoteStorage, NoteUtil } from './';
 
 @Injectable()
+@Component({
+  providers: [NoteAuth],
+})
 export class AuthService {
 
   private isFirstRoute: boolean = true;
@@ -50,8 +53,8 @@ export class AuthService {
     if (this.noteAuth.isAuthenticated()) {
       return Promise.resolve(true);
     } else {
-      this.noteStorage.local.set('newkit_redirect_url', window.location.pathname + window.location.search + window.location.hash);
-      router.navigateByUrl('/login');
+      // this.noteStorage.local.set('newkit_redirect_url', window.location.pathname + window.location.search + window.location.hash);
+      router.navigateByUrl('/signin');
       return Promise.resolve(false);
     }
   }

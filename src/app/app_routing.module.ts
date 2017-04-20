@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthService, AuthGuard } from './services';
 
 import { SignInComponent } from './component/sign_in.component/sign_in.component';

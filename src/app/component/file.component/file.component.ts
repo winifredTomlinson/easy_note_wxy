@@ -51,6 +51,8 @@ export class FileComponent implements OnInit{
 
   private focusedIndex: number;
   private fileTitleHide: boolean = false;
+
+  private transhDropdown:boolean = false;
   constructor(
     // private noteAjax: NoteAjax,
     // private noteAuth: NoteAuth
@@ -182,6 +184,14 @@ export class FileComponent implements OnInit{
     $(".icon-user").on('click', function(){
       $(this).attr('data-toggle', 'modal');
     });
+     $('#trashBox').on('mousedown',function(event:any){
+      if(event.button == 2) {
+        console.log(this.transhDropdown);
+        this.transhDropdown = true;
+      }else{
+        this.transhDropdown = false;
+      }
+    })
 
         // console.log($('.content-detail').offsetWidth);
   }

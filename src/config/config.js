@@ -4,7 +4,7 @@ const config = {
   APIGatewayAddress: '127.0.0.1:3000',
   configServiceAddress: '127.0.0.1:3000/eggkeeper/v1',
   DomainName: 'Newkit',
-  SSOAddress: 'http://10.16.75.26:8501',
+  SSOAddress: 'http://rapapi.org/api/queryModel.do?projectId=17064&ve=146070',
   // NewkitAPI: 'http://10.16.75.27:9031/newegg-central-2/v1',
   NewkitAPI: '127.0.0.1:3000',
   Applications: [{

@@ -8,12 +8,12 @@ import { Tip } from '../../common/tip';
 import { TipService } from '../../services/tip.service';
 import { TodolistComponent } from '../todo_list.component/todo_list.component';
 @Component({
-  selector: 'nk-profile',
-  templateUrl: 'app/component/modal.component/user_profile.component.html'
+  selector: 'nk-cancel-password',
+  templateUrl: 'app/component/modal.component/cancel_read_password.component.html'
 })
 
 // 定义添加页面的component
-export class UserProfileComponent implements OnInit {
+export class cancelPasswordComponent implements OnInit {
   // @Input() notice:boolean;
   tips: Tip[] = [];
   addTip: Tip;

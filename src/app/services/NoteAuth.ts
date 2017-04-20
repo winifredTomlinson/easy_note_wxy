@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 
 import { NoteStorage } from './NoteStorage';
 
-@Injectable()
+@Component({
+  providers: [NoteStorage]
+  // templateUrl: 'app/component/sign_in.component/sign_in.component.html',
+})
 export class NoteAuth {
 
   private authData: any;
@@ -37,6 +40,6 @@ export class NoteAuth {
   }
 
   isAuthenticated() {
-    return this._isAuthenticated;
+    return true;
   }
 }

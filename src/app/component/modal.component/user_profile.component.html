@@ -80,7 +80,7 @@
 							<td>昵称</td>
 							<td>
 								<div class="input-wraper">
-									<input id="nicknameInput" type="text" name="" placeholder="">
+									<input id="nicknameInput" [(ngModel)]="nickname" type="text" name="" placeholder="">
 								</div>
 							</td>
 						</tr>
@@ -116,8 +116,8 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                             </button>
-				<button id="saveButton" type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveProfile()">
-                                                提交更改
+				<button id="saveProfile" type="button" class="btn btn-primary" (click)="saveProfile()">
+                                                保存
                                             </button>
 			</div>
 		</div>

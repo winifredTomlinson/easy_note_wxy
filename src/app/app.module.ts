@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 // import { nvD3 } from 'ng2-nvd3';
+import { HttpModule } from '@angular/http';
 import { LocalStorageService, ILocalStorageServiceConfig } from 'angular-2-local-storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { EditTipComponent } from './component/edit_tip.component/edit_tip.compon
 import { EditMarkdownComponent } from './component/edit_markdown.component/edit_markdown.component';
 import { UserProfileComponent } from './component/modal.component/user_profile.component';
 import { AddFolderComponent } from './component/modal.component/add_folder.component';
+import { cancelPasswordComponent } from './component/modal.component/cancel_read_password.component';
 import { MoreOperationComponent } from './component/more_operation.component/more_operation.component';
 import { TreeComponent } from './component/tree.component/tree.component';
 import { TreeItemComponent } from './component/tree.component/tree-item.component';
@@ -42,6 +44,7 @@ let localStorageServiceConfig = {
     AppRoutingModule,
     NgbModule.forRoot(),
     ChartsModule,
+    HttpModule
     // Ng2UeditorModule
   ],
   declarations: [
@@ -55,6 +58,7 @@ let localStorageServiceConfig = {
     EditMarkdownComponent,
     UserProfileComponent,
     AddFolderComponent,
+    cancelPasswordComponent,
     MoreOperationComponent,
     TreeComponent,
     TreeItemComponent,

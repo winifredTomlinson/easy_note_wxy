@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="main-box" id="mainBox">
-                        <form method="POST" action="" id="signupWraper" class="signupWraper">
+                        <div method="POST" action="" id="signupWraper" class="signupWraper">
                             <div class="group-inputs">
                                 <div class="input-wraper">
                                     <input type="text" name="" placeholder="用户名">
@@ -68,20 +68,20 @@
                                     <input type="text" name="" placeholder="用户名">
                                 </div>
                             </div>
-                        </form>
-                        <form method="POST" action="" id="signinWraper" class="signinWraper">
+                        </div>
+                        <div method="POST" action="" id="signinWraper" class="signinWraper">
                             <div class="group-inputs" >
                                 <div class="input-wraper">
-                                    <input type="text" name="" placeholder="bbbbbbbb">
+                                    <input [(ngModel)]="signInName" type="text" name="" placeholder="请输入用户名">
                                 </div>
                                 <div class="input-wraper">
-                                    <input type="text" name="" placeholder="用户名">
+                                    <input [(ngModel)]="signInPassword"  type="text" name="" placeholder="请输入密码">
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="button-wraper">
-                        <button type="submit" class="sign-button" [ngClass]="{'signin-button': currentOperate=='登录', 'signup-button': currentOperate=='注册'}">{{currentOperate}}</button>
+                        <button type="submit" class="sign-button" (click)="submitInfor()" [ngClass]="{'signin-button': currentOperate=='登录', 'signup-button': currentOperate=='注册'}">{{currentOperate}}</button>
                     </div>
                 </div>
             </div>
