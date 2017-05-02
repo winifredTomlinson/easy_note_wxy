@@ -1,0 +1,14 @@
+<!--tip详情页-->
+<div *ngIf="tip" class="tip-chart">
+    <div class="tip-chart-content">
+        <div class="tip-title">{{tip.name}}</div>
+        <div class="chart-detail">
+            <div><label>完成状态: </label>
+                <span *ngIf="tip.state" class="state-done">已完成</span>
+                <span *ngIf="!tip.state" class="state-not-done">未完成</span>
+            </div>
+            <div><label>过期时间: </label>{{tip.expirationTime}}</div>
+            <div><label>事件描述: </label>{{tip.description}}</div>
+        </div>
+    </div>
+</div>

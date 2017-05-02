@@ -1,0 +1,38 @@
+<div style="display: block">
+  
+  <!--<canvas id='canvas' [ngClass]="{'line-chart': chartType == 'line','pie-chart':chartType == 'pie'}" baseChart
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [chartType]="chartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>-->
+  <!--<canvas [ngClass]="{'line-chart': chartType == 'line','pie-chart':chartType == 'bar'}" baseChart
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [chartType]="pie"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>-->
+  <div class="chart-wraper">
+      <div class="charts-title">最近一周访问量Top3</div>
+      <div class="switch-button">
+        <button [ngClass]="{'active':lineChartType=='bar'}" type="" (click)="showLineChart('bar')">直方图</button>
+        <button [ngClass]="{'active':lineChartType=='line'}" type="" (click)="showLineChart('line')">线性图</button>
+      </div>
+    <canvas class="line-chart" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [colors]="lineChartColors" [legend]="lineChartLegend"
+      [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+  <div class="chart-wraper">
+      <div class="charts-title">最近一周访问量Top3各自比例</div>
+    <div class="switch-button">
+      <button [ngClass]="{'active':pieChartType=='doughnut'}" type="" (click)="showPieChart('doughnut')">圆环图</button>
+      <button [ngClass]="{'active':pieChartType=='pie'}" type="" (click)="showPieChart('pie')">饼图</button>
+    </div>
+    <canvas class="pie-chart" baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+</div>
+<script src="../../config_js/chart.min.js"></script>

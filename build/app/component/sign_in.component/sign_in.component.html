@@ -1,0 +1,90 @@
+<div id="app">
+    <section id="intro">
+        <div class="intro-inner">
+            <h1>
+                <div class="inner">
+                        Easy  Note
+                </div>
+            </h1>
+            <h2>
+                <div class="inner">
+                    Start Your Own Notes 
+                </div>
+            </h2>
+        </div>
+    </section>
+    <div class="content">
+        <div class="top-wrap">
+            <div class="wrap-main">
+                <span class="quote">你的笔记管家</span>
+            </div>
+        </div>
+        <div class="index-main">
+            <div class="title-wrapper">
+                <div class="title" id="noteLetter">
+                    <span class="letter">
+                        <span class="inner">N</span>
+                    </span>
+                    <span class="letter">
+                        <span class="inner">O</span>
+                    </span>
+                    <span class="letter">
+                        <span class="inner">T</span>
+                    </span>
+                    <span class="letter">
+                        <span class="inner">E</span>
+                    </span>
+                </div>
+            </div>
+            <div class="index-main-body">
+                <div class="index-header">
+                    <h1 class="headtitle">云笔记</h1>
+                    <h4 class="subtitle">创建自己的云笔记空间</h4>
+                </div>
+                <div class="index-body">
+                    <div class="main-nav">
+                        <div class="nav-slider">
+                            <div class="sign-wraper">
+                                <div (click)="signup()" class="nav-font" [ngClass]="{'active': currentOperate == '注册'}" data-hover="注册">注册</div>
+                            </div>
+                            <div class="sign-wraper">
+                                <div (click)="signin()" class="nav-font" [ngClass]="{'active': currentOperate == '登录'}" data-hover="登录">登录</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-box" id="mainBox">
+                        <div method="POST" action="" id="signupWraper" class="signupWraper">
+                            <div class="group-inputs">
+                                <div class="input-wraper">
+                                    <input type="text" name="" placeholder="用户名">
+                                </div>
+                                <div class="input-wraper">
+                                    <input type="text" name="" placeholder="用户名">
+                                </div>
+                                <div class="input-wraper">
+                                    <input type="text" name="" placeholder="用户名">
+                                </div>
+                                <div class="input-wraper">
+                                    <input type="text" name="" placeholder="用户名">
+                                </div>
+                            </div>
+                        </div>
+                        <div method="POST" action="" id="signinWraper" class="signinWraper">
+                            <div class="group-inputs" >
+                                <div class="input-wraper">
+                                    <input [(ngModel)]="signInName" type="text" name="" placeholder="请输入用户名">
+                                </div>
+                                <div class="input-wraper">
+                                    <input [(ngModel)]="signInPassword"  type="text" name="" placeholder="请输入密码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-wraper">
+                        <button type="submit" class="sign-button" (click)="submitInfor()" [ngClass]="{'signin-button': currentOperate=='登录', 'signup-button': currentOperate=='注册'}">{{currentOperate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

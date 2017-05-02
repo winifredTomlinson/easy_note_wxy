@@ -179,20 +179,27 @@ export class FileComponent implements OnInit{
     $(".content-menu").on('click', function(){
       $(this).find('.menu-detail').addClass('menu-active');
       $(this).siblings().find('.menu-detail').removeClass('menu-active');
-      // console.log($(".menu-active").siblings());
+    });
+    $(document).on('mousedown', function(event:any){
+      if( !$(event.target).is('#trashBox') ){
+      // event.preventDefault();
+      // event.stopPropagation();
+        $('#trashBoxMenu').css('display', 'none');
+      }   
     });
     $(".icon-user").on('click', function(){
       $(this).attr('data-toggle', 'modal');
     });
+      $("#trashBox").bind('contextmenu', function(){
+       return false;
+    });
      $('#trashBox').on('mousedown',function(event:any){
       if(event.button == 2) {
-        console.log(this.transhDropdown);
-        this.transhDropdown = true;
+        event.preventDefault();
+        $('#trashBoxMenu').css({'display': 'block', 'left': event.pageX + 'px', 'top': event.pageY - 110 +"px"});
       }else{
-        this.transhDropdown = false;
+        $('#trashBoxMenu').css('display', 'none');
       }
-    })
-
-        // console.log($('.content-detail').offsetWidth);
+    });
   }
 }

@@ -1,0 +1,18 @@
+<div *ngIf="tip" class="operate-modal">
+	<div class="modal fade" id="moreOperateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="select" data-dismiss="modal"[routerLink]="['/todo_list/edit', editDetail()]">
+						<h4>编辑</h4>
+					</div>
+					<div class="delete-tip select" data-dismiss="modal" (click)="deleteTip()" [routerLink]="['/todo_list']">
+						<h4>删除</h4>
+					</div>
+					<div class="select" data-dismiss="modal" [routerLink]="['/todo_list']"><h4>取消</h4>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</div>
+</div>

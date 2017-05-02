@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <meta charset="UTF-8" />
+  <title>Easy Note</title>
+  <link rel="stylesheet" href="./css/editormd.min.css" />
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+  <style>
+    .my-baseLoad {
+      /*overflow: hidden;*/
+      height: 9em;
+      left: 50%;
+      margin: -7.5em;
+      padding: 3em;
+      position: absolute;
+      top: 50%;
+      width: 9em;
+      transform: rotateX(45deg) rotateZ(45deg);
+      transform-style: preserve-3d;
+    }
+    
+    .my-cube,
+    .my-cube:after,
+    .my-cube:before {
+      content: '';
+      float: left;
+      height: 3em;
+      position: absolute;
+      width: 3em;
+    }
+    /* Top */
+    
+    .my-cube {
+      background-color: #05afd1;
+      position: relative;
+      transform: translateZ(3em);
+      transform-style: preserve-3d;
+      transition: .25s;
+      box-shadow: 13em 13em 1.5em rgba(0, 0, 0, 0.1);
+      animation: anim 1s infinite;
+    }
+    
+    .my-cube:after {
+      background-color: #049dbc;
+      transform: rotateX(-90deg) translateY(3em);
+      transform-origin: 100% 100%;
+    }
+    
+    .my-cube:before {
+      background-color: #048ca7;
+      transform: rotateY(90deg) translateX(3em);
+      transform-origin: 100% 0;
+    }
+    
+    .my-cube:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    
+    .my-cube:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    
+    .my-cube:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+    
+    .my-cube:nth-child(4) {
+      animation-delay: 0.2s;
+    }
+    
+    .my-cube:nth-child(5) {
+      animation-delay: 0.25s;
+    }
+    
+    .my-cube:nth-child(6) {
+      animation-delay: 0.3s;
+    }
+    
+    .my-cube:nth-child(7) {
+      animation-delay: 0.35s;
+    }
+    
+    .my-cube:nth-child(8) {
+      animation-delay: 0.4s;
+    }
+    
+    .my-cube:nth-child(9) {
+      animation-delay: 0.45s;
+    }
+    
+    @keyframes anim {
+      50% {
+        transform: translateZ(0.5em);
+      }
+    }
+  </style>
+
+
+  <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+  <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
+  <script src="https://unpkg.com/reflect-metadata@0.1.8"></script>
+  <script src="https://unpkg.com/systemjs@0.19.39/dist/system.src.js"></script>
+  <script src="https://cdn.rawgit.com/angular/angular.io/b3c65a9/public/docs/_examples/_boilerplate/systemjs.config.web.js"></script>
+  <!--<script src=""></script>-->
+  <script>
+         System.config({
+            defaultJSExtensions: true,
+            packages: {
+            "/angular2-jwt": {
+             "defaultExtension": "js"
+        }
+      },
+      map: {
+        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt"
+      }
+    });
+            System.import('build/index').catch(function(err){ console.error(err); });
+        </script>
+</head>
+
+<body>
+  <nk-app>
+    <my-app>
+      <!--<div style="text-align:center;clear:both;">
+      </div>
+      <div class="my-baseLoad">
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+        <div class="my-cube"></div>
+      </div>-->
+    </my-app>
+  </nk-app>
+
+  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<script src="../../config_js/jquery-3.1.1.min.js"></script>-->
+  <script src="../../config_js/jquery-3.1.1.min.js"></script>
+  <script src="../../config_js/bootstrap-3.3.7.min.js"></script>
+  <!-- 配置文件 -->
+  <script type="text/javascript" src="../../config_js/ueditor.config.js"></script>
+  <!-- 编辑器源码文件 -->
+  <script type="text/javascript" src="../../config_js/ueditor.all.js"></script>
+
+
+  <script type="text/javascript" src="../../config_js/editormd.min.js"></script>
+
+
+  <script src="../build/index.js"></script>
+  <script src="../../config_js/chart.min.js"></script>
+
+  <!--<script type="text/javascript">
+      if(window.location.href == 'http://localhost:8080/edite'){
+        // window.UEDITOR_HOME_URL = "/edite/";
+        var ue = UE.getEditor('container');
+      }
+	</script>-->
+
+
+
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>-->
+  <!--<script>
+     (function(d3) {
+        'use strict';
+
+        var dataset = [
+          { label: 'Abulia', count: 10 },
+          { label: 'Betelgeuse', count: 20 },
+          { label: 'Cantaloupe', count: 30 },
+          { label: 'Dijkstra', count: 40 }
+        ];
+        dataset.forEach(function(d) {
+            d.count = +d.count;
+            d.enabled = true;                                         // NEW
+          });
+
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;
+        var donutWidth = 75;
+        var legendRectSize = 18;                                  // NEW
+        var legendSpacing = 4;                                    // NEW
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20b);
+        
+
+        var svg = d3.select('#chart')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +
+            ',' + (height / 2) + ')');
+
+        var arc = d3.arc()
+          .innerRadius(radius - donutWidth)
+          .outerRadius(radius);
+
+        var pie = d3.pie()
+          .value(function(d) { return d.count; })
+          .sort(null);
+
+        var tooltip = d3.select('#chart')
+          .append('div')
+          .attr('class', 'tooltip');
+
+        tooltip.append('div')
+          .attr('class', 'label');
+
+        tooltip.append('div')
+          .attr('class', 'count');
+
+        tooltip.append('div')
+          .attr('class', 'percent');
+
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) {
+            return color(d.data.label);
+          })
+          .each(function(d) { this._current = d; });
+
+          path.on('mouseover', function(d) {
+            var total = d3.sum(dataset.map(function(d) {
+              return (d.enabled) ? d.count : 0;                       // UPDATED
+            }));
+            var percent = Math.round(1000 * d.data.count / total) / 10;
+            tooltip.select('.label').html(d.data.label);
+            tooltip.select('.count').html(d.data.count);
+            tooltip.select('.percent').html(percent + '%');
+            tooltip.style('display', 'block');
+          });
+
+          path.on('mouseout', function() {
+            tooltip.style('display', 'none');
+          });
+
+
+        var legend = svg.selectAll('.legend')                     // NEW
+          .data(color.domain())                                   // NEW
+          .enter()                                                // NEW
+          .append('g')                                            // NEW
+          .attr('class', 'legend')                                // NEW
+          .attr('transform', function(d, i) {                     // NEW
+            var height = legendRectSize + legendSpacing;          // NEW
+            var offset =  height * color.domain().length / 2;     // NEW
+            var horz = -2 * legendRectSize;                       // NEW
+            var vert = i * height - offset;                       // NEW
+            return 'translate(' + horz + ',' + vert + ')';        // NEW
+          });                                                     // NEW
+
+        legend.append('rect')                                     // NEW
+          .attr('width', legendRectSize)                          // NEW
+          .attr('height', legendRectSize)                         // NEW
+          .style('fill', color)                                   // NEW
+          .style('stroke', color)
+          .on('click', function(label) {                            // NEW
+              var rect = d3.select(this);                             // NEW
+              var enabled = true;                                     // NEW
+              var totalEnabled = d3.sum(dataset.map(function(d) {     // NEW
+                return (d.enabled) ? 1 : 0;                           // NEW
+              }));
+
+        if (rect.attr('class') === 'disabled') {                // NEW
+                rect.attr('class', '');                               // NEW
+              } else {                                                // NEW
+                if (totalEnabled < 2) return;                         // NEW
+                rect.attr('class', 'disabled');                       // NEW
+                enabled = false;                                      // NEW
+              }                                                       // NEW
+
+              pie.value(function(d) {                                 // NEW
+                if (d.label === label) d.enabled = enabled;           // NEW
+                return (d.enabled) ? d.count : 0;                     // NEW
+              });                                                     // NEW
+
+              path = path.data(pie(dataset));                         // NEW
+
+              path.transition()                                       // NEW
+                .duration(750)                                        // NEW
+                .attrTween('d', function(d) {                         // NEW
+                  var interpolate = d3.interpolate(this._current, d); // NEW
+                  this._current = interpolate(0);                     // NEW
+                  return function(t) {                                // NEW
+                    return arc(interpolate(t));                       // NEW
+                  };                                                  // NEW
+                });                                                   // NEW
+            });                                                                          
+
+        legend.append('text')                                     // NEW
+          .attr('x', legendRectSize + legendSpacing)              // NEW
+          .attr('y', legendRectSize - legendSpacing)              // NEW
+          .text(function(d) { return d; });                       // NEW
+
+      })(window.d3);
+    </script>-->
+</body>
+
+</html>

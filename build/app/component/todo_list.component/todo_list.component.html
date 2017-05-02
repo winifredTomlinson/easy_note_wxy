@@ -1,0 +1,17 @@
+<!--tip list页面-->
+<div class="todo-list">
+    <ul class="tips">
+        <li *ngFor="let tip of tips">
+        <span class="tip-check-box" [ngClass]="{'box-active':tip.state,'box-nomal':!tip.state}" id={{tip.id}} (click)="clickCheckBox(tip.id)"></span>
+        <div class="tip-name" [routerLink]="['/todo_list', tip.id]">
+            {{tip.name}}
+        </div>
+        <button class="operate-more"  data-toggle="modal" data-target="#moreOperateModal" (click)="getId(tip.id)">●●●</button>
+        </li>
+    </ul>
+    <button class="add-tip" data-toggle="modal" data-target="#addModal" (click)="reNew()">+</button>
+
+    <router-outlet></router-outlet>
+    <!--<add-tip></add-tip>-->
+    <more-oparetion [id] = editId></more-oparetion>
+</div>

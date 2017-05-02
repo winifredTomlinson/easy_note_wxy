@@ -602,8 +602,30 @@ canvas[pieChartLabels]{
         }
     }
 
+    .tree-open{
+         &::before{
+            border-left-color: @white;
+        }
+        &::after{
+            border-top-color: @white;
+        }
+        span{
+            &:nth-of-type(1){
+                color: @white
+            }
+        }
+    }
+
     .tree-selected{
-        color: @white;
+        &::before{
+            border-left-color: @white;
+        }
+        &::after{
+            border-top-color: @white;
+        }
+        span{
+            color: @white;
+        }
     }
 
     //第二栏导航
@@ -681,9 +703,30 @@ canvas[pieChartLabels]{
         }
         }
     }
+    .tree-top{
+        &::before{
+            border-left-color: @black;
+        }
+        &::after{
+            border-top-color: @black;
+        }
+        span{
+            &:first-child{
+                color: @black;
+            }
+        }
+    }
 
     .tree-selected{
-        color: @black;
+        &::before{
+            border-left-color: @black;
+        }
+        &::after{
+            border-top-color: @black;
+        }
+        span{
+            color: @black;
+        }
     }
 
 //第二栏导航
