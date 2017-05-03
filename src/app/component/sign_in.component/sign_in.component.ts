@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteAjax } from '../../services/NoteAjax';
 // import { NoteAuth } from '../../services/NoteAuth';
@@ -12,11 +12,25 @@ import { NoteAjax } from '../../services/NoteAjax';
 
 
 export class SignInComponent{
+  private $el: any;
   private mainBox:any;
   private signupWraper: any;
   private signinWraper: any;
   private currentOperate: string = '注册';
   private noteLetter: any;
+
+
+  //注册
+  private signupInfor: Array<any> = [
+    {title: "用戶名", noticeInfor: "用戶名不能为空", value: "username"},
+    {title: "密码", noticeInfor: "密码不能为空", value: "password"},
+    {title: "确认密码", noticeInfor: "两次密码不一致", value: "confirmPassword"},
+    {title: "用戶名", noticeInfor: "用戶名不能为空", value: "username"}
+  ];
+  private username: string;
+  private password: string;
+  private confirmPassword: string;
+  private inforValid: boolean = true;
 
 
   //登录
@@ -35,25 +49,42 @@ export class SignInComponent{
     this.currentOperate = '注册';
   }
 
+  private checkInputContent(index:any){
+    // `${signupInfor[index]}.value` = 
+    console.log(this.username);
+  }
+
   private submitInfor(){
     let userInfor = {
-        name: this.signInName,
+        username: this.signInName,
         password: this.signInPassword
     };
-    this.noteAjax.get("../config_js/json/sign_in.json")
-        .then((data) => {
-          let dataJson = JSON.parse (data._body);
-          console.log(dataJson.name);
-          if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
-            this.router.navigateByUrl('');
-          }
-        });
-    
+    if(this.currentOperate=='注册'){
+      this.noteAjax.post(`${NewkitConf.APIGatewayAddress}/api/login/`, userInfor)
+          .then((data) => {
+            // let dataJson = JSON.parse (data._body);
+            // console.log(dataJson.name);
+            // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+            //   this.router.navigateByUrl('');
+            // }
+      });
+    }
+    if(this.currentOperate=='登录'){
+      this.noteAjax.get("../config_js/json/sign_in.json")
+          .then((data) => {
+            let dataJson = JSON.parse (data._body);
+            console.log(dataJson.name);
+            if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+              this.router.navigateByUrl('');
+            }
+      });
+    }  
   }
 
   constructor(
     private router: Router,
     private noteAjax: NoteAjax,
+    private elementRef: ElementRef
     // private authService: AuthService,
     // private authGuard: AuthGuard,
     // private noteAuth: NoteAuth
@@ -61,6 +92,9 @@ export class SignInComponent{
 
 
   ngOnInit(): void {
+    this.$el = $(this.elementRef.nativeElement.className = 'signup-input');
+    this.$el.on('blur', (index:any) => console.log('gggggggggggggggg'));
+    console.log(this.$el);
     this.mainBox = document.getElementById("mainBox");    
     this.signupWraper = document.getElementById("signupWraper");
     this.signinWraper = document.getElementById("signinWraper");
@@ -68,8 +102,12 @@ export class SignInComponent{
     // this.noteLetter.style.height = "420px";
   }
   ngOnChanegs(obj: any): void{
+    this.username = obj.username;
+    this.password = obj.password;
+    this.confirmPassword = obj.confirmPassword;
     this.signInName = obj.signInName;
     this.signInPassword = obj.signInPassword;
+    console.log(this.username);
   }
 
 }

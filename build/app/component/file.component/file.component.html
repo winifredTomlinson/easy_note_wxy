@@ -79,26 +79,31 @@
                                 </div>
                                 <div class="note-list">
                                     <div class="search-box">
+                                        <span class="dropdown show-type">
+                                            <i class="font-black-darker" [ngClass]="{'icon-tasks': showType=='abstract', 'icon-list': showType=='list'}"></i>
+                                            <i class="icon-angle-down font-black-darker" data-toggle="dropdown"></i>
+                                            <div class="dropdown-menu">
+                                                <li (click)="selectShowType('abstract')">
+                                                    <a>
+                                                        <span>摘要</span>
+                                                        <i [class.icon-ok] = 'showType == "abstract"' style="float:right"></i>  
+                                                    </a>
+                                                </li>
+                                                <li (click)="selectShowType('list')">
+                                                    <a>
+                                                        <span>列表</span>
+                                                        <i [class.icon-ok] = 'showType == "list"' style="float:right"></i>  
+                                                    </a>
+                                                </li>
+                                            </div>    
+                                        </span>
                                         <span class="search-content">
                                             <input type="text" name="" value="">
-                                            <span class="lock-icon-content">
-                                                <i class="icon-search"></i>
-                                            </span>
-                                        </span>
-                                        <span class="dropdown">
-                                            <i class="icon-tasks" data-toggle="dropdown"></i>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                  <i class="icon-tasks"></i>  
-                                                </li>
-                                                <li>
-                                                     <i class="icon-angle-down"></i>
-                                                </li>
-                                            </ul>    
+                                            <i class="icon-search font-black-darker"></i>
                                         </span>
                                     </div>
-                                    <ul>
-                                        <li *ngFor="let item of noteList,let i = index" [routerLink]="['/edite', i]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
+                                    <ul *ngIf="showType == 'abstract'">
+                                        <li class="file-reference-abstract" *ngFor="let item of noteList,let i = index" [routerLink]="['/edite', i]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
                                             <span class="note-name">
                                                 <i class="my-icon icon-file-alt font-blue"></i>
                                                 {{item.name}}
@@ -107,6 +112,14 @@
                                             <div class="date-time">
                                                 <span class="file-date">{{item.createTime}}</span>
                                             </div>
+                                        </li>
+                                    </ul>
+                                    <ul *ngIf="showType == 'list'">
+                                        <li class="file-reference-list" *ngFor="let item of noteList,let i = index" [routerLink]="['/edite', i]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
+                                            <span class="note-name">
+                                                <i class="my-icon icon-file-alt font-blue"></i>
+                                                {{item.name}}
+                                            </span>
                                         </li>
                                     </ul>
                                     <!--<div class="lock-detail">

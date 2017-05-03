@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7eccc025336af520b5ce"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ac4145fdf6b4a72634f6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -72494,10 +72494,19 @@
 	// import { AuthService } from '../../services/auth.service';
 	// import { AuthGuard } from '../../services/auth-guard';
 	var SignInComponent = (function () {
-	    function SignInComponent(router, noteAjax) {
+	    function SignInComponent(router, noteAjax, elementRef) {
 	        this.router = router;
 	        this.noteAjax = noteAjax;
+	        this.elementRef = elementRef;
 	        this.currentOperate = '注册';
+	        //注册
+	        this.signupInfor = [
+	            { title: "用戶名", noticeInfor: "用戶名不能为空", value: "username" },
+	            { title: "密码", noticeInfor: "密码不能为空", value: "password" },
+	            { title: "确认密码", noticeInfor: "两次密码不一致", value: "confirmPassword" },
+	            { title: "用戶名", noticeInfor: "用戶名不能为空", value: "username" }
+	        ];
+	        this.inforValid = true;
 	    }
 	    SignInComponent.prototype.signin = function () {
 	        this.mainBox.style.height = '100px';
@@ -72511,22 +72520,41 @@
 	        this.signinWraper.style.left = '300px';
 	        this.currentOperate = '注册';
 	    };
+	    SignInComponent.prototype.checkInputContent = function (index) {
+	        // `${signupInfor[index]}.value` = 
+	        console.log(this.username);
+	    };
 	    SignInComponent.prototype.submitInfor = function () {
 	        var _this = this;
 	        var userInfor = {
-	            name: this.signInName,
+	            username: this.signInName,
 	            password: this.signInPassword
 	        };
-	        this.noteAjax.get("../config_js/json/sign_in.json")
-	            .then(function (data) {
-	            var dataJson = JSON.parse(data._body);
-	            console.log(dataJson.name);
-	            if (_this.signInName == dataJson.name && _this.signInPassword == dataJson.password) {
-	                _this.router.navigateByUrl('');
-	            }
-	        });
+	        if (this.currentOperate == '注册') {
+	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/login/", userInfor)
+	                .then(function (data) {
+	                // let dataJson = JSON.parse (data._body);
+	                // console.log(dataJson.name);
+	                // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+	                //   this.router.navigateByUrl('');
+	                // }
+	            });
+	        }
+	        if (this.currentOperate == '登录') {
+	            this.noteAjax.get("../config_js/json/sign_in.json")
+	                .then(function (data) {
+	                var dataJson = JSON.parse(data._body);
+	                console.log(dataJson.name);
+	                if (_this.signInName == dataJson.name && _this.signInPassword == dataJson.password) {
+	                    _this.router.navigateByUrl('');
+	                }
+	            });
+	        }
 	    };
 	    SignInComponent.prototype.ngOnInit = function () {
+	        this.$el = $(this.elementRef.nativeElement.className = 'signup-input');
+	        this.$el.on('blur', function (index) { return console.log('gggggggggggggggg'); });
+	        console.log(this.$el);
 	        this.mainBox = document.getElementById("mainBox");
 	        this.signupWraper = document.getElementById("signupWraper");
 	        this.signinWraper = document.getElementById("signinWraper");
@@ -72534,8 +72562,12 @@
 	        // this.noteLetter.style.height = "420px";
 	    };
 	    SignInComponent.prototype.ngOnChanegs = function (obj) {
+	        this.username = obj.username;
+	        this.password = obj.password;
+	        this.confirmPassword = obj.confirmPassword;
 	        this.signInName = obj.signInName;
 	        this.signInPassword = obj.signInPassword;
+	        console.log(this.username);
 	    };
 	    return SignInComponent;
 	}());
@@ -72545,7 +72577,8 @@
 	        templateUrl: 'app/component/sign_in.component/sign_in.component.html',
 	    }),
 	    __metadata("design:paramtypes", [router_1.Router,
-	        NoteAjax_1.NoteAjax])
+	        NoteAjax_1.NoteAjax,
+	        core_1.ElementRef])
 	], SignInComponent);
 	exports.SignInComponent = SignInComponent;
 
@@ -80234,6 +80267,7 @@
 	        this.active = false;
 	        this.fileTitleHide = false;
 	        this.transhDropdown = false;
+	        this.showType = 'abstract';
 	    }
 	    FileComponent.prototype.changeSkin = function (color) {
 	        this.skinColor = color;
@@ -80284,6 +80318,9 @@
 	        // this.active = true;
 	        // console.log( $(this));
 	        // $('.menu-active').siblings().removeClass('menu-active');
+	    };
+	    FileComponent.prototype.selectShowType = function (type) {
+	        this.showType = type;
 	    };
 	    FileComponent.prototype.selectCal = function () {
 	        this.fileTitleHide = true;

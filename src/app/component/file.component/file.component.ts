@@ -53,6 +53,10 @@ export class FileComponent implements OnInit{
   private fileTitleHide: boolean = false;
 
   private transhDropdown:boolean = false;
+
+
+
+  private showType: string = 'abstract';
   constructor(
     // private noteAjax: NoteAjax,
     // private noteAuth: NoteAuth
@@ -116,6 +120,10 @@ export class FileComponent implements OnInit{
     // this.active = true;
     // console.log( $(this));
     // $('.menu-active').siblings().removeClass('menu-active');
+  }
+
+  private selectShowType(type: any){
+    this.showType = type;
   }
 
   private selectCal(){
