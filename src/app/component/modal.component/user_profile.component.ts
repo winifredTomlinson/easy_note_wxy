@@ -41,7 +41,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   private saveProfile(){
-    console.log(this.nickname);    
     if(!this.nickname){
       $('#saveProfile').attr('data-dismiss', '');
       this.nicknameValid = false;

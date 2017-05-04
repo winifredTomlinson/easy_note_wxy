@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ac4145fdf6b4a72634f6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "12a510f888f026d490a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -57682,10 +57682,12 @@
 	var more_operation_component_1 = __webpack_require__(178);
 	var tree_component_1 = __webpack_require__(179);
 	var tree_item_component_1 = __webpack_require__(180);
+	//指令
+	var email_validator_1 = __webpack_require__(181);
 	//服务
 	var tip_service_1 = __webpack_require__(167);
 	//路由
-	var app_routing_module_1 = __webpack_require__(181);
+	var app_routing_module_1 = __webpack_require__(183);
 	var localStorageServiceConfig = {
 	    prefix: 'nk-app',
 	    storageType: 'sessionStorage'
@@ -57707,6 +57709,7 @@
 	        ],
 	        declarations: [
 	            sign_in_component_1.SignInComponent,
+	            email_validator_1.EmailValidator,
 	            file_component_1.FileComponent,
 	            favoriteNotes_component_1.FavoriteComponent,
 	            app_1.AppComponent,
@@ -72506,7 +72509,10 @@
 	            { title: "确认密码", noticeInfor: "两次密码不一致", value: "confirmPassword" },
 	            { title: "用戶名", noticeInfor: "用戶名不能为空", value: "username" }
 	        ];
-	        this.inforValid = true;
+	        this.usernameValid = true;
+	        this.passwordValid = true;
+	        this.secondPasswordValid = true;
+	        this.emailValid = true;
 	    }
 	    SignInComponent.prototype.signin = function () {
 	        this.mainBox.style.height = '100px';
@@ -72520,9 +72526,29 @@
 	        this.signinWraper.style.left = '300px';
 	        this.currentOperate = '注册';
 	    };
-	    SignInComponent.prototype.checkInputContent = function (index) {
-	        // `${signupInfor[index]}.value` = 
-	        console.log(this.username);
+	    SignInComponent.prototype.checkUsername = function () {
+	        if (!this.username) {
+	            this.usernameValid = false;
+	        }
+	        else {
+	            this.usernameValid = true;
+	        }
+	    };
+	    SignInComponent.prototype.checkPassword = function () {
+	        if (!this.password) {
+	            this.passwordValid = false;
+	        }
+	        else {
+	            this.passwordValid = true;
+	        }
+	    };
+	    SignInComponent.prototype.checkSecondPassword = function () {
+	        if (this.password == this.confirmPassword) {
+	            this.secondPasswordValid = true;
+	        }
+	        else {
+	            this.secondPasswordValid = false;
+	        }
 	    };
 	    SignInComponent.prototype.submitInfor = function () {
 	        var _this = this;
@@ -72553,7 +72579,7 @@
 	    };
 	    SignInComponent.prototype.ngOnInit = function () {
 	        this.$el = $(this.elementRef.nativeElement.className = 'signup-input');
-	        this.$el.on('blur', function (index) { return console.log('gggggggggggggggg'); });
+	        // this.$el.on('blur', (index:any) => console.log('gggggggggggggggg'));
 	        console.log(this.$el);
 	        this.mainBox = document.getElementById("mainBox");
 	        this.signupWraper = document.getElementById("signupWraper");
@@ -72567,6 +72593,7 @@
 	        this.confirmPassword = obj.confirmPassword;
 	        this.signInName = obj.signInName;
 	        this.signInPassword = obj.signInPassword;
+	        this.emailValue = obj.emailValue;
 	        console.log(this.username);
 	    };
 	    return SignInComponent;
@@ -81145,7 +81172,6 @@
 	        this.addTip = new tip_1.Tip;
 	    };
 	    UserProfileComponent.prototype.saveProfile = function () {
-	        console.log(this.nickname);
 	        if (!this.nickname) {
 	            $('#saveProfile').attr('data-dismiss', '');
 	            this.nicknameValid = false;
@@ -81652,6 +81678,204 @@
 
 /***/ },
 /* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(81);
+	var forms_1 = __webpack_require__(123);
+	var NoteValidators_1 = __webpack_require__(182);
+	exports.EMAIL_VALIDATOR = {
+	    provide: forms_1.NG_VALIDATORS,
+	    useExisting: core_1.forwardRef(function () { return EmailValidator; }),
+	    multi: true
+	};
+	var EmailValidator = (function () {
+	    function EmailValidator() {
+	    }
+	    EmailValidator.prototype._createValidator = function () {
+	        this._validator = NoteValidators_1.NoteValidators.email();
+	    };
+	    EmailValidator.prototype.ngOnChanges = function (changesObj) {
+	        console.log(changesObj.email);
+	        if (changesObj.email) {
+	            this._createValidator();
+	            if (this._onChange) {
+	                this._onChange();
+	            }
+	        }
+	    };
+	    EmailValidator.prototype.validate = function (c) {
+	        return this._validator(c);
+	    };
+	    return EmailValidator;
+	}());
+	__decorate([
+	    core_1.Input(),
+	    __metadata("design:type", String)
+	], EmailValidator.prototype, "email", void 0);
+	EmailValidator = __decorate([
+	    core_1.Directive({
+	        selector: '[email]',
+	        providers: [exports.EMAIL_VALIDATOR]
+	    }),
+	    __metadata("design:paramtypes", [])
+	], EmailValidator);
+	exports.EmailValidator = EmailValidator;
+
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(81);
+	var isEmptyInputValue = function (value) {
+	    return value == null || (typeof value === 'string' && value.length === 0);
+	};
+	var NoteValidators = (function () {
+	    function NoteValidators() {
+	    }
+	    NoteValidators.min = function (minValue) {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            var numberVal = parseFloat(control.value);
+	            return numberVal < minValue ? { 'min': { 'requiredValue': minValue, 'actualValue': numberVal } } : null;
+	        };
+	    };
+	    NoteValidators.max = function (maxValue) {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            var numberVal = parseFloat(control.value);
+	            return numberVal > maxValue ? { 'max': { 'requiredValue': maxValue, 'actualValue': numberVal } } : null;
+	        };
+	    };
+	    NoteValidators.email = function () {
+	        var emailReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            return emailReg.test(control.value) ? null : { 'email': true };
+	        };
+	    };
+	    //   static emailGroup(): ValidatorFn {
+	    //     const emailReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+	    //     return (control: AbstractControl): { [key: string]: any } => {
+	    //       if (isEmptyInputValue(control.value)) {
+	    //         return null;  // don't validate empty values to allow optional controls
+	    //       }
+	    //       let emails = control.value.split(';').map(item => item.trim());
+	    //       let invalid = false;
+	    //       for (let item of emails) {
+	    //         if (!emailReg.test(item)) {
+	    //           invalid = true;
+	    //           break;
+	    //         }
+	    //       }
+	    //       let numberVal = parseFloat(control.value);
+	    //       return invalid ? { 'emailGroup': true } : null;
+	    //     };
+	    //   }
+	    NoteValidators.isEmptyInput = function () {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            return isEmptyInputValue(control.value) ? { 'isEmpty': false } : { 'isEmpty': true };
+	        };
+	    };
+	    NoteValidators.integer = function () {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            return Number(control.value) === parseInt(control.value, 10) ? null : { 'integer': true };
+	        };
+	    };
+	    NoteValidators.number = function () {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(control.value) ? null : { 'number': true };
+	        };
+	    };
+	    NoteValidators.equal = function (equalValue) {
+	        return function (control) {
+	            if (isEmptyInputValue(control.value)) {
+	                return null; // don't validate empty values to allow optional controls
+	            }
+	            return equalValue === control.value ? null : { equal: { 'requiredValue': equalValue, 'actualValue': control.value } };
+	        };
+	    };
+	    NoteValidators.equalTo = function (equalTo) {
+	        var subscribed = false;
+	        var equalControl = typeof equalTo === 'string' ? null : equalTo;
+	        return function (control) {
+	            if (!subscribed) {
+	                subscribed = true;
+	                if (!equalControl) {
+	                    equalControl = control.root.get(equalTo);
+	                }
+	                equalControl.valueChanges.subscribe(function () {
+	                    control.updateValueAndValidity();
+	                });
+	            }
+	            return control.value === equalControl.value ? null : { 'equalTo': { to: typeof equalTo === 'string' ? equalTo : equalControl.name } };
+	        };
+	    };
+	    NoteValidators.validateFn = function (fn) {
+	        return function (control) {
+	            return new Promise(function (resolve, reject) {
+	                Promise.resolve()
+	                    .then(function () {
+	                    return fn(control.value);
+	                })
+	                    .then(function (result) {
+	                    if (result === false) {
+	                        return resolve({ validateFn: true });
+	                    }
+	                    resolve(null);
+	                })
+	                    .catch(function (reason) {
+	                    resolve({ validateFn: true, reason: reason });
+	                });
+	            });
+	        };
+	    };
+	    return NoteValidators;
+	}());
+	NoteValidators = __decorate([
+	    core_1.Injectable(),
+	    __metadata("design:paramtypes", [])
+	], NoteValidators);
+	exports.NoteValidators = NoteValidators;
+
+
+/***/ },
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

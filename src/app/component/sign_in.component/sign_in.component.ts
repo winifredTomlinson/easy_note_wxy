@@ -30,7 +30,11 @@ export class SignInComponent{
   private username: string;
   private password: string;
   private confirmPassword: string;
-  private inforValid: boolean = true;
+  private emailValue: string;
+  private usernameValid: boolean = true;
+  private passwordValid: boolean = true;
+  private secondPasswordValid: boolean = true;
+  private emailValid: boolean = true;
 
 
   //登录
@@ -49,9 +53,28 @@ export class SignInComponent{
     this.currentOperate = '注册';
   }
 
-  private checkInputContent(index:any){
-    // `${signupInfor[index]}.value` = 
-    console.log(this.username);
+  private checkUsername(){
+    if(!this.username){
+      this.usernameValid = false;
+    }else{
+      this.usernameValid = true;
+    }
+  }
+
+  private checkPassword(){
+    if(!this.password){
+      this.passwordValid = false;
+    }else{
+      this.passwordValid = true;
+    }
+  }
+
+  private checkSecondPassword(){
+    if(this.password == this.confirmPassword){
+      this.secondPasswordValid = true;
+    }else{
+      this.secondPasswordValid = false;
+    }
   }
 
   private submitInfor(){
@@ -93,7 +116,7 @@ export class SignInComponent{
 
   ngOnInit(): void {
     this.$el = $(this.elementRef.nativeElement.className = 'signup-input');
-    this.$el.on('blur', (index:any) => console.log('gggggggggggggggg'));
+    // this.$el.on('blur', (index:any) => console.log('gggggggggggggggg'));
     console.log(this.$el);
     this.mainBox = document.getElementById("mainBox");    
     this.signupWraper = document.getElementById("signupWraper");
@@ -107,6 +130,7 @@ export class SignInComponent{
     this.confirmPassword = obj.confirmPassword;
     this.signInName = obj.signInName;
     this.signInPassword = obj.signInPassword;
+    this.emailValue = obj.emailValue;
     console.log(this.username);
   }
 

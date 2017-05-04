@@ -26,8 +26,12 @@ import { TreeItemComponent } from './component/tree.component/tree-item.componen
 
 
 
+//指令
+import { EmailValidator } from './directives/validators/email.validator';
+
 //服务
 import { TipService } from './services/tip.service';
+
 //路由
 import { AppRoutingModule } from './app_routing.module';
 
@@ -49,6 +53,7 @@ let localStorageServiceConfig = {
   ],
   declarations: [
     SignInComponent,
+    EmailValidator,
     FileComponent,
     FavoriteComponent,
     AppComponent,
