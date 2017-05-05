@@ -24,6 +24,10 @@
 </div>-->
 <!--<div id="container" name="content" type="text/plain">这里写你的初始化内容</div>-->
 <!--<ng2-ueditor [(ngModel)]="content"></ng2-ueditor>-->
+    <div class="file-title" [class.div-hidden]="fileTitleHide">
+        <input type="text" name="" value="" [(ngModel)]="fileTitle">
+        <button class="fileSave" (click)="saveFileInfor()">保存</button>
+    </div>
     <div id="container" name="content" type="text/plain"></div>
 
   	<!-- 实例化编辑器 -->

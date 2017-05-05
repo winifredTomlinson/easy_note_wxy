@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "12a510f888f026d490a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "677675a27852680d1277"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -72556,26 +72556,25 @@
 	            username: this.signInName,
 	            password: this.signInPassword
 	        };
-	        if (this.currentOperate == '注册') {
+	        if (this.currentOperate == '登录') {
 	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/login/", userInfor)
 	                .then(function (data) {
-	                // let dataJson = JSON.parse (data._body);
-	                // console.log(dataJson.name);
-	                // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
-	                //   this.router.navigateByUrl('');
-	                // }
-	            });
-	        }
-	        if (this.currentOperate == '登录') {
-	            this.noteAjax.get("../config_js/json/sign_in.json")
-	                .then(function (data) {
 	                var dataJson = JSON.parse(data._body);
-	                console.log(dataJson.name);
-	                if (_this.signInName == dataJson.name && _this.signInPassword == dataJson.password) {
+	                if (dataJson.code == 10000) {
 	                    _this.router.navigateByUrl('');
 	                }
 	            });
 	        }
+	        // if(this.currentOperate=='登录'){
+	        //   this.noteAjax.get("../config_js/json/sign_in.json")
+	        //       .then((data) => {
+	        //         let dataJson = JSON.parse (data._body);
+	        //         console.log(dataJson.name);
+	        //         if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+	        //           this.router.navigateByUrl('');
+	        //         }
+	        //   });
+	        // }  
 	    };
 	    SignInComponent.prototype.ngOnInit = function () {
 	        this.$el = $(this.elementRef.nativeElement.className = 'signup-input');
@@ -80369,31 +80368,45 @@
 	    };
 	    FileComponent.prototype.ngOnInit = function () {
 	        this.noteList = [{
-	                name: '前端笔记',
+	                id: 'dsafrwgregrwtg',
+	                type: '/edite',
+	                title: '前端笔记',
 	                abstract: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: 'h89dghoty0pj0',
+	                type: '/markdown',
+	                title: '前端笔记',
 	                abstract: 'bbbbbbbbbbbbbb',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: 'kkojfdbigkj080sdh',
+	                type: '/edite',
+	                title: '前端笔记',
 	                abstract: 'ccccccccc',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: 'nxcfkrmve0w-r0',
+	                type: '/edite',
+	                title: '前端笔记',
 	                abstract: 'ddddddddddddd',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: '29454185dsadfg',
+	                type: '/edite',
+	                title: '前端笔记',
 	                abstract: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: 'fsdfe4trg6589o6789',
+	                type: '/markdown',
+	                title: '前端笔记',
 	                abstract: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
 	                createTime: '2017-03-30'
 	            }, {
-	                name: '前端笔记',
+	                id: 'gngrf6567rfb',
+	                type: '/markdown',
+	                title: '前端笔记',
 	                abstract: 'bbbbbbbbbbbbbb',
 	                createTime: '2017-03-30'
 	            },];
@@ -80674,9 +80687,8 @@
 	            .then(function (tips) { return tips.find(function (tip) { return tip.id === id; }); });
 	    };
 	    //获取id
-	    TipService.prototype.getId = function (id) {
-	        var editId = id;
-	        return editId;
+	    TipService.prototype.getId = function (idAbstract) {
+	        return Promise.resolve(idAbstract);
 	    };
 	    //新建一个空tip
 	    TipService.prototype.reNew = function () {
@@ -81001,16 +81013,18 @@
 	var angular_2_local_storage_1 = __webpack_require__(119);
 	var router_1 = __webpack_require__(141);
 	var common_1 = __webpack_require__(115);
+	var NoteAjax_1 = __webpack_require__(160);
 	var tip_service_1 = __webpack_require__(167);
 	var EditTipComponent = (function () {
 	    // private fileTitle: string;
 	    // @Output()
 	    // private newFileId: EventEmitter<string> = new EventEmitter();
-	    function EditTipComponent(tipService, route, location, localStorageService) {
+	    function EditTipComponent(tipService, route, location, localStorageService, noteAjax) {
 	        this.tipService = tipService;
 	        this.route = route;
 	        this.location = location;
 	        this.localStorageService = localStorageService;
+	        this.noteAjax = noteAjax;
 	        // @Input() id:number;
 	        this.tips = [];
 	    }
@@ -81019,6 +81033,29 @@
 	        this.tip = this.localStorageService.get('basic_tip');
 	        console.log(this.tip);
 	        this.tipService.noSave(id, this.tip);
+	    };
+	    EditTipComponent.prototype.saveFileInfor = function () {
+	        var _this = this;
+	        var ue = UE.getEditor('container');
+	        this.route.params
+	            .subscribe(function (params) { return _this.currentId = params['id']; });
+	        // .subscribe(tip => this.tip = tip);
+	        console.log(this.currentId);
+	        var currentfileInfor = {
+	            currentId: this.currentId,
+	            currentContent: ue.getContent(),
+	            fileType: 'edite'
+	        };
+	        if (!$('#edui6_state').hasClass('edui-state-disabled')) {
+	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/login/", ue.getContent())
+	                .then(function (data) {
+	                // let dataJson = JSON.parse (data._body);
+	                // console.log(dataJson.name);
+	                // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+	                //   this.router.navigateByUrl('');
+	                // }
+	            });
+	        }
 	    };
 	    EditTipComponent.prototype.showEditor = function () {
 	    };
@@ -81056,13 +81093,15 @@
 	}());
 	EditTipComponent = __decorate([
 	    core_1.Component({
+	        providers: [NoteAjax_1.NoteAjax],
 	        // selector: 'ng2-ueditor',
 	        templateUrl: 'app/component/edit_tip.component/edit_tip.component.html',
 	    }),
 	    __metadata("design:paramtypes", [tip_service_1.TipService,
 	        router_1.ActivatedRoute,
 	        common_1.Location,
-	        angular_2_local_storage_1.LocalStorageService])
+	        angular_2_local_storage_1.LocalStorageService,
+	        NoteAjax_1.NoteAjax])
 	], EditTipComponent);
 	exports.EditTipComponent = EditTipComponent;
 
@@ -81157,6 +81196,7 @@
 	        this.modalService = modalService;
 	        // @Input() notice:boolean;
 	        this.tips = [];
+	        this.userPhotoUrl = '';
 	        this.nicknameValid = true;
 	    }
 	    //  添加功能
@@ -81171,6 +81211,10 @@
 	        this.notice = false;
 	        this.addTip = new tip_1.Tip;
 	    };
+	    UserProfileComponent.prototype.photoSelect = function (e) {
+	        console.log('%%%%%%%%%%%%%');
+	        console.log(e);
+	    };
 	    UserProfileComponent.prototype.saveProfile = function () {
 	        if (!this.nickname) {
 	            $('#saveProfile').attr('data-dismiss', '');
@@ -81184,6 +81228,9 @@
 	    // 初始化时tip信息为空
 	    UserProfileComponent.prototype.ngOnInit = function () {
 	        var _this = this;
+	        // $('#photoSelect').onchange = function(e:any){
+	        //   console.log(e);
+	        // }
 	        this.tipService.reNew().then(function (reNewTip) {
 	            _this.addTip = new tip_1.Tip;
 	        });
@@ -81705,7 +81752,6 @@
 	        this._validator = NoteValidators_1.NoteValidators.email();
 	    };
 	    EmailValidator.prototype.ngOnChanges = function (changesObj) {
-	        console.log(changesObj.email);
 	        if (changesObj.email) {
 	            this._createValidator();
 	            if (this._onChange) {
@@ -81714,6 +81760,7 @@
 	        }
 	    };
 	    EmailValidator.prototype.validate = function (c) {
+	        console.log(this._validator(c));
 	        return this._validator(c);
 	    };
 	    return EmailValidator;
@@ -81912,7 +81959,7 @@
 	        path: '', component: file_component_1.FileComponent,
 	        children: [
 	            { path: 'edite/:id', component: edit_tip_component_1.EditTipComponent },
-	            { path: 'markdown', component: edit_markdown_component_1.EditMarkdownComponent },
+	            { path: 'markdown/:id', component: edit_markdown_component_1.EditMarkdownComponent },
 	            { path: 'favoriteNotes', component: favoriteNotes_component_1.FavoriteComponent },
 	        ]
 	    }

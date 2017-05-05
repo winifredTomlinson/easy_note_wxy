@@ -150,31 +150,45 @@ export class FileComponent implements OnInit{
   }
   ngOnInit(): void {
     this.noteList = [{
-      name: '前端笔记',
+      id: 'dsafrwgregrwtg',
+      type: '/edite',
+      title: '前端笔记',
       abstract: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: 'h89dghoty0pj0',
+      type: '/markdown',      
+      title: '前端笔记',
       abstract: 'bbbbbbbbbbbbbb',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: 'kkojfdbigkj080sdh',
+      type: '/edite',      
+      title: '前端笔记',
       abstract: 'ccccccccc',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: 'nxcfkrmve0w-r0',
+      type: '/edite',      
+      title: '前端笔记',
       abstract: 'ddddddddddddd',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: '29454185dsadfg',
+      type: '/edite',      
+      title: '前端笔记',
       abstract: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: 'fsdfe4trg6589o6789',
+      type: '/markdown',      
+      title: '前端笔记',
       abstract: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
       createTime: '2017-03-30'
     },{
-      name: '前端笔记',
+      id: 'gngrf6567rfb',
+      type: '/markdown',      
+      title: '前端笔记',
       abstract: 'bbbbbbbbbbbbbb',
       createTime: '2017-03-30'
     },];

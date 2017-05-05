@@ -56,10 +56,10 @@
                         <div method="POST" action="" id="signupWraper" class="signupWraper">
                             <div class="group-inputs">
                                 <div class="input-wraper">
-                                    <input class="signup-input" type="text" name="" placeholder="用户名" (blur)="checkUsername()" [(ngModel)]="username">
-                                    <span [ngClass]="{'div-hidden': usernameValid, 'notice-infor': !usernameValid}">
+                                    <input class="signup-input" type="text" name="" placeholder="用户名" #control="ngModel"  [(ngModel)]="emailValue" email>
+                                   <span *ngIf="control?.errors?.email" class="notice-infor">
                                         <i class="icon-remove-sign"></i>
-                                        用户名不能为空
+                                        用户名为可用的邮箱'
                                     </span>
                                 </div>
                                 <div class="input-wraper">
@@ -76,13 +76,13 @@
                                         两次密码不一样
                                     </span>
                                 </div>
-                                <div class="input-wraper">
+                                <!--<div class="input-wraper">
                                     <input class="signup-input" type="text" name="" placeholder="用户名"  #control="ngModel"  [(ngModel)]="emailValue" email>
                                      <span *ngIf="control?.errors?.email" class="notice-infor">
                                         <i class="icon-remove-sign"></i>
                                         邮箱格式不正确
                                     </span>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div method="POST" action="" id="signinWraper" class="signinWraper">

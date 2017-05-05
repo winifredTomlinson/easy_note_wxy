@@ -18,9 +18,8 @@ export class TipService{
     }
 
     //获取id
-    getId(id: number){
-        let editId = id;
-        return editId;
+    getId(idAbstract: string): Promise<String> {
+        return Promise.resolve(idAbstract);
     }
 
     //新建一个空tip

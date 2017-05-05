@@ -27,7 +27,7 @@
                                 </span>
                                 <ul class="dropdown-menu">
                                     <li [routerLink]="['/edite', newId]"><a (click)="onNewFileId()">笔记</a></li>
-                                    <li [routerLink]="['/markdown']" ><a (click)="onNewFileId()">Markdown</a></li>
+                                    <li [routerLink]="['/markdown, newId']" ><a (click)="onNewFileId()">Markdown</a></li>
                                     <li class="divider"></li>
                                     <li><a data-toggle="modal" data-target="#addFolderModal">文件夹</a></li>
                                 </ul>
@@ -59,7 +59,7 @@
                                 </li>
                                     <ul class="dropdown-menu" id="trashBoxMenu">
                                         <li [routerLink]="['/edite', newId]"><a (click)="onNewFileId()" >清空回收站</a></li>
-                                        <li [routerLink]="['/markdown']" ><a (click)="onNewFileId()">全部恢复</a></li>
+                                        <li [routerLink]="['/markdown', newId]" ><a (click)="onNewFileId()">全部恢复</a></li>
                                     </ul>
                             </ul>
                         </div> 
@@ -103,10 +103,10 @@
                                         </span>
                                     </div>
                                     <ul *ngIf="showType == 'abstract'">
-                                        <li class="file-reference-abstract" *ngFor="let item of noteList,let i = index" [routerLink]="['/edite', i]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
+                                        <li class="file-reference-abstract" *ngFor="let item of noteList" [routerLink]="[item.type, item.id]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
                                             <span class="note-name">
                                                 <i class="my-icon icon-file-alt font-blue"></i>
-                                                {{item.name}}
+                                                {{item.title}}
                                             </span>
                                             <div class="note-abstract">{{item.abstract}}</div>
                                             <div class="date-time">
@@ -165,10 +165,10 @@
                                     </iframe>-->
 
 
-                                    <div class="file-title" [class.div-hidden]="fileTitleHide">
+                                    <!--<div class="file-title" [class.div-hidden]="fileTitleHide">
                                         <input type="text" name="" value="" [(ngModel)]="fileTitle">
-                                        <button class="fileSave">保存</button>
-                                    </div>
+                                        <button class="fileSave" (save)>保存</button>
+                                    </div>-->
                                     <!--<div class="lock-content">
                                         <i class="icon-pencil"></i>
                                     </div>-->

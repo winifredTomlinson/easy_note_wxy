@@ -818,7 +818,8 @@ section#intro h2 .inner {
   right: 25px;
 }
 .file-title .fileSave:hover {
-  border-color: #4f9eda;
+  color: #fff;
+  background-color: #55abed;
 }
 .detail-container {
   position: relative;
@@ -1188,6 +1189,16 @@ canvas[pieChartLabels] {
 .modal-body .sex-input {
   margin-top: 0;
   vertical-align: middle;
+}
+.modal-body input {
+  display: inline-block !important;
+}
+.userphoto {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border: 1px solid #55abed;
 }
 .cancel-modal-body {
   padding: 15px 197px !important;

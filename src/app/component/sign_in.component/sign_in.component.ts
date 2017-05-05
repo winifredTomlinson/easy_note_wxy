@@ -82,26 +82,25 @@ export class SignInComponent{
         username: this.signInName,
         password: this.signInPassword
     };
-    if(this.currentOperate=='注册'){
+    if(this.currentOperate=='登录'){
       this.noteAjax.post(`${NewkitConf.APIGatewayAddress}/api/login/`, userInfor)
           .then((data) => {
-            // let dataJson = JSON.parse (data._body);
-            // console.log(dataJson.name);
-            // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
-            //   this.router.navigateByUrl('');
-            // }
-      });
-    }
-    if(this.currentOperate=='登录'){
-      this.noteAjax.get("../config_js/json/sign_in.json")
-          .then((data) => {
             let dataJson = JSON.parse (data._body);
-            console.log(dataJson.name);
-            if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+            if(dataJson.code == 10000){
               this.router.navigateByUrl('');
             }
       });
-    }  
+    }
+    // if(this.currentOperate=='登录'){
+    //   this.noteAjax.get("../config_js/json/sign_in.json")
+    //       .then((data) => {
+    //         let dataJson = JSON.parse (data._body);
+    //         console.log(dataJson.name);
+    //         if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
+    //           this.router.navigateByUrl('');
+    //         }
+    //   });
+    // }  
   }
 
   constructor(

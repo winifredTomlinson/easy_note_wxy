@@ -34,7 +34,7 @@ const routes: Routes = [
     path: '', component: FileComponent,
     children: [
       { path: 'edite/:id', component: EditTipComponent },
-      { path: 'markdown', component: EditMarkdownComponent },
+      { path: 'markdown/:id', component: EditMarkdownComponent },
       { path: 'favoriteNotes', component: FavoriteComponent },
       // { path: '', redirectTo: '/todo_list', pathMatch: 'full' },
       // { path: 'todo_list', component: TodolistComponent },

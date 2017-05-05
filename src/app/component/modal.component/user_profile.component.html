@@ -70,7 +70,10 @@
 					<table>
 						<tr>
 							<td width="15%">头像</td>
-							<td><input type="file" name="" value="" class="btn-default"></td>
+							<td>
+								<img class="userphoto" [src]=userPhotoUrl />
+								<input id="photoSelect" type="file" name="" value="" (change)="photoSelect($event)">
+							</td>
 						</tr>
 						<tr>
 							<td>账号</td>
