@@ -448,7 +448,7 @@ section#intro h2 .inner {
 }
 .index-main-body .main-box .notice-infor {
   position: absolute;
-  left: 176px;
+  left: 153px;
   margin-top: -33px;
   color: #ff0000;
 }
@@ -1303,7 +1303,7 @@ canvas[pieChartLabels] {
   background-color: #526169;
 }
 .bk-black .note-list .li-active {
-  background-color: #48636f;
+  background-color: #48636f !important;
   color: #fff;
 }
 .bk-black .lock-detail {
@@ -1375,7 +1375,7 @@ canvas[pieChartLabels] {
 }
 .bk-grey .note-list .file-reference-abstract:hover {
   color: #222d32;
-  background-color: #f8f8f8;
+  background-color: #e4e3e3;
 }
 .bk-grey .note-list .file-reference-list {
   color: #222d32;
@@ -1384,11 +1384,11 @@ canvas[pieChartLabels] {
 }
 .bk-grey .note-list .file-reference-list:hover {
   color: #222d32;
-  background-color: #f8f8f8;
+  background-color: #e4e3e3;
 }
 .bk-grey .note-list .li-active {
   color: #222d32;
-  background-color: #b8c7ce;
+  background-color: #b8c7ce !important;
 }
 .font-yellow {
   color: #a27a02;

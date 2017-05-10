@@ -8,7 +8,7 @@ import { TIPS } from '../../common/mock_tips';
 import { Tip } from '../../common/tip';
 import { TipService } from '../../services/tip.service';
 // import { Ng2UeditorModule } from 'ng2-ueditor';
-declare var UE: any;
+declare var editormd: any;
 @Component({
   // selector: 'ng2-ueditor',
   templateUrl: 'app/component/edit_markdown.component/edit_markdown.component.html',
@@ -41,8 +41,6 @@ export class EditMarkdownComponent{
   }
 
   ngOnInit(): void {
-    console.log('editormd' in window);
-    //  $(function() {
     let editor = editormd("editormd", {
         width:'100%',
         height:690,
@@ -50,8 +48,6 @@ export class EditMarkdownComponent{
         codeFold : true,
         path : "./config_js/lib/" // 根据自己的实际路径填写
     });
-    
-  // })
   }
 //  ngOnDestroy() {
 //     editormd("editormd", {

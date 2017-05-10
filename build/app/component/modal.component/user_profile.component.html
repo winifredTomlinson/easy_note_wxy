@@ -96,13 +96,13 @@
 							<td>
 								<span>
 									<label>
-										<input class="sex-input" type="radio" name="sex" value="" checked>男
+										<input class="sex-input" type="radio" name="sex" value="1" [(ngModel)]="innerValue" checked>男
 									</label>
 									<label>
-										<input class="sex-input" type="radio" name="sex" value="">女
+										<input class="sex-input" type="radio" name="sex" value="2" [(ngModel)]="innerValue">女
 									</label>
 									<label>
-										<input class="sex-input" type="radio" name="sex" value="">保密
+										<input class="sex-input" type="radio" name="sex" value="0" [(ngModel)]="innerValue">保密
 									</label>
 								</span>
 							</td>
@@ -110,7 +110,7 @@
 						<tr>
 							<td>签名</td>
 							<td>
-								<textarea type="text"></textarea>
+								<textarea type="text" [(ngModel)]="remark"></textarea>
 							</td>
 						</tr>
 					</table>

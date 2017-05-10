@@ -27,7 +27,7 @@
                                 </span>
                                 <ul class="dropdown-menu">
                                     <li [routerLink]="['/edite', newId]"><a (click)="onNewFileId()">笔记</a></li>
-                                    <li [routerLink]="['/markdown, newId']" ><a (click)="onNewFileId()">Markdown</a></li>
+                                    <li [routerLink]="['/markdown', newId]" ><a (click)="onNewFileId()">Markdown</a></li>
                                     <li class="divider"></li>
                                     <li><a data-toggle="modal" data-target="#addFolderModal">文件夹</a></li>
                                 </ul>
@@ -103,10 +103,25 @@
                                         </span>
                                     </div>
                                     <ul *ngIf="showType == 'abstract'">
-                                        <li class="file-reference-abstract" *ngFor="let item of noteList" [routerLink]="[item.type, item.id]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i">
-                                            <span class="note-name">
+                                        <li class="file-reference-abstract" *ngFor="let item of noteList,let i = index" [routerLink]="[item.type, item.id]" (click)="itemSelect(i)" [class.li-active]="focusedIndex == i || 0">
+                                            <span class="note-name dropdown" (click)="stopPrapation()" >
                                                 <i class="my-icon icon-file-alt font-blue"></i>
                                                 {{item.title}}
+                                                <i class="my-icon icon-angle-down dropdown-toggle" style="float:right" (click)="stopPrapation()" data-toggle="dropdown"></i>
+                                                <div class="dropdown-menu" style="left: 85px">
+                                                    <li>
+                                                        <a>
+                                                            <span>摘要</span>
+                                                            <i [class.icon-ok] = 'showType == "abstract"' style="float:right"></i>  
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a>
+                                                            <span>列表</span>
+                                                            <i [class.icon-ok] = 'showType == "list"' style="float:right"></i>  
+                                                        </a>
+                                                    </li>
+                                                </div> 
                                             </span>
                                             <div class="note-abstract">{{item.abstract}}</div>
                                             <div class="date-time">

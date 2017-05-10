@@ -57,9 +57,9 @@
                             <div class="group-inputs">
                                 <div class="input-wraper">
                                     <input class="signup-input" type="text" name="" placeholder="用户名" #control="ngModel"  [(ngModel)]="emailValue" email>
-                                   <span *ngIf="control?.errors?.email" class="notice-infor">
+                                   <span *ngIf="emailValue && control?.errors?.email" class="notice-infor">
                                         <i class="icon-remove-sign"></i>
-                                        用户名为可用的邮箱'
+                                        用户名为可用的邮箱
                                     </span>
                                 </div>
                                 <div class="input-wraper">
@@ -70,7 +70,7 @@
                                     </span>
                                 </div>
                                 <div class="input-wraper">
-                                    <input class="signup-input" type="text" name="" placeholder="确认密码" (blur)="checkSecondPassword()" [(ngModel)]="confirmPassword">
+                                    <input class="signup-input" type="password" name="" placeholder="确认密码" (blur)="checkSecondPassword()" [(ngModel)]="confirmPassword">
                                      <span [ngClass]="{'div-hidden': secondPasswordValid, 'notice-infor': !secondPasswordValid}">
                                         <i class="icon-remove-sign"></i>
                                         两次密码不一样
@@ -91,7 +91,7 @@
                                     <input [(ngModel)]="signInName" type="text" name="" placeholder="请输入用户名">
                                 </div>
                                 <div class="input-wraper">
-                                    <input [(ngModel)]="signInPassword"  type="text" name="" placeholder="请输入密码">
+                                    <input [(ngModel)]="signInPassword"  type="password" name="" placeholder="请输入密码">
                                 </div>
                             </div>
                         </div>

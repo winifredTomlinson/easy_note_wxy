@@ -136,9 +136,10 @@ export class FileComponent implements OnInit{
     return this.newFolder, this.treeOpen;
   }
 
-  private itemSelect(index: any){
+  private itemSelect(index: number){
     this.fileTitleHide = false;
     this.focusedIndex = index;
+    
   } 
 
 

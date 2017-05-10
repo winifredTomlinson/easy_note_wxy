@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "677675a27852680d1277"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fd828e32be6899516279"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -81016,7 +81016,6 @@
 	var NoteAjax_1 = __webpack_require__(160);
 	var tip_service_1 = __webpack_require__(167);
 	var EditTipComponent = (function () {
-	    // private fileTitle: string;
 	    // @Output()
 	    // private newFileId: EventEmitter<string> = new EventEmitter();
 	    function EditTipComponent(tipService, route, location, localStorageService, noteAjax) {
@@ -81027,6 +81026,7 @@
 	        this.noteAjax = noteAjax;
 	        // @Input() id:number;
 	        this.tips = [];
+	        this.fileTitle = "无标题笔记";
 	    }
 	    //编辑页面不保存功能
 	    EditTipComponent.prototype.noSave = function (id) {
@@ -81035,25 +81035,17 @@
 	        this.tipService.noSave(id, this.tip);
 	    };
 	    EditTipComponent.prototype.saveFileInfor = function () {
-	        var _this = this;
 	        var ue = UE.getEditor('container');
-	        this.route.params
-	            .subscribe(function (params) { return _this.currentId = params['id']; });
 	        // .subscribe(tip => this.tip = tip);
 	        console.log(this.currentId);
 	        var currentfileInfor = {
-	            currentId: this.currentId,
-	            currentContent: ue.getContent(),
-	            fileType: 'edite'
+	            note_id: this.currentId,
+	            desc: ue.getContent(),
+	            title: this.fileTitle,
 	        };
 	        if (!$('#edui6_state').hasClass('edui-state-disabled')) {
-	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/login/", ue.getContent())
+	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/note/get_note/", currentfileInfor)
 	                .then(function (data) {
-	                // let dataJson = JSON.parse (data._body);
-	                // console.log(dataJson.name);
-	                // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
-	                //   this.router.navigateByUrl('');
-	                // }
 	            });
 	        }
 	    };
@@ -81065,6 +81057,7 @@
 	    //   this.newFileId.next(this.fileId);
 	    // }
 	    EditTipComponent.prototype.ngOnInit = function () {
+	        var _this = this;
 	        //新建
 	        // this.fileTitle = '无标题笔记';
 	        // console.log(this.fileTitle);
@@ -81072,12 +81065,17 @@
 	        //   this.fileTitle = '无标题笔记';
 	        //   console.log(this.fileTitle);
 	        // }
-	        var fileContent = '<p>aaaaaaaaaaaaaaa</p>';
+	        this.route.params
+	            .subscribe(function (params) { return _this.currentId = params['id']; });
+	        // let fileContent = '<p>aaaaaaaaaaaaaaa</p>'
 	        UE.getEditor('container');
-	        var ue = UE.getEditor('container');
-	        ue.ready(function () {
-	            ue.setContent(fileContent);
-	            console.log(ue.getContent());
+	        this.noteAjax.get(NewkitConf.APIGatewayAddress + "/api/note/get_note/", this.currentId)
+	            .then(function (data) {
+	            var dataJson = JSON.parse(data._body);
+	            var ue = UE.getEditor('container');
+	            ue.ready(function () {
+	                ue.setContent(dataJson.data.desc);
+	            });
 	        });
 	        // this.emitValue();
 	        // this.route.params
@@ -81145,8 +81143,6 @@
 	    EditMarkdownComponent.prototype.showEditor = function () {
 	    };
 	    EditMarkdownComponent.prototype.ngOnInit = function () {
-	        console.log('editormd' in window);
-	        //  $(function() {
 	        var editor = editormd("editormd", {
 	            width: '100%',
 	            height: 690,
@@ -81154,7 +81150,6 @@
 	            codeFold: true,
 	            path: "./config_js/lib/" // 根据自己的实际路径填写
 	        });
-	        // })
 	    };
 	    return EditMarkdownComponent;
 	}());
@@ -81189,15 +81184,21 @@
 	var core_1 = __webpack_require__(81);
 	var ng_bootstrap_1 = __webpack_require__(129);
 	var tip_1 = __webpack_require__(168);
+	var NoteAjax_1 = __webpack_require__(160);
 	var tip_service_1 = __webpack_require__(167);
 	var UserProfileComponent = (function () {
-	    function UserProfileComponent(tipService, modalService) {
+	    function UserProfileComponent(elementRef, tipService, modalService, noteAjax) {
+	        this.elementRef = elementRef;
 	        this.tipService = tipService;
 	        this.modalService = modalService;
+	        this.noteAjax = noteAjax;
 	        // @Input() notice:boolean;
 	        this.tips = [];
 	        this.userPhotoUrl = '';
 	        this.nicknameValid = true;
+	        this.innerValue = '1';
+	        this.onChange = Function.prototype;
+	        this.onTouched = Function.prototype;
 	    }
 	    //  添加功能
 	    UserProfileComponent.prototype.setTip = function (name, expirationTime, description) {
@@ -81212,8 +81213,15 @@
 	        this.addTip = new tip_1.Tip;
 	    };
 	    UserProfileComponent.prototype.photoSelect = function (e) {
-	        console.log('%%%%%%%%%%%%%');
-	        console.log(e);
+	        var files = e.target.files || e.srcElement.files;
+	        var file = files[0];
+	        var formData = new FormData;
+	        formData.append('upfile', file);
+	        formData.append('key1', 'value1');
+	        formData.append('key2', 'value2');
+	        this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/upload/", formData)
+	            .then(function (data) {
+	        });
 	    };
 	    UserProfileComponent.prototype.saveProfile = function () {
 	        if (!this.nickname) {
@@ -81221,6 +81229,15 @@
 	            this.nicknameValid = false;
 	        }
 	        else {
+	            var profile = {
+	                nickname: this.nickname,
+	                remark: this.remark,
+	                gender: this.innerValue
+	            };
+	            console.log(profile.gender);
+	            this.noteAjax.post(NewkitConf.APIGatewayAddress + "/api/user/get_info/", profile)
+	                .then(function (data) {
+	            });
 	            $('#saveProfile').attr('data-dismiss', 'modal');
 	            this.nicknameValid = true;
 	        }
@@ -81237,16 +81254,20 @@
 	    };
 	    UserProfileComponent.prototype.ngOnchanges = function (changesObj) {
 	        this.nickname = changesObj.nickname;
+	        this.innerValue = changesObj.innerValue;
 	    };
 	    return UserProfileComponent;
 	}());
 	UserProfileComponent = __decorate([
 	    core_1.Component({
 	        selector: 'nk-profile',
+	        providers: [NoteAjax_1.NoteAjax],
 	        templateUrl: 'app/component/modal.component/user_profile.component.html'
 	    }),
-	    __metadata("design:paramtypes", [tip_service_1.TipService,
-	        ng_bootstrap_1.NgbModal])
+	    __metadata("design:paramtypes", [core_1.ElementRef,
+	        tip_service_1.TipService,
+	        ng_bootstrap_1.NgbModal,
+	        NoteAjax_1.NoteAjax])
 	], UserProfileComponent);
 	exports.UserProfileComponent = UserProfileComponent;
 

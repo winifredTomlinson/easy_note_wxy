@@ -1,6 +1,6 @@
 // 添加tip
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalBackdrop } from '../../common/modal_backdrop';
 import { MaterialModule } from '@angular/material';
@@ -23,11 +23,18 @@ export class UserProfileComponent implements OnInit {
   private userPhotoUrl: string = '';
   private nickname: string;
   private nicknameValid:boolean = true;
+  private remark: string;
+
+  private innerValue: any = '1';
+
+  public onChange: any = Function.prototype;
+  public onTouched: any = Function.prototype;
   constructor(
+    private elementRef: ElementRef,
     private tipService: TipService,
     private modalService: NgbModal,
     private noteAjax: NoteAjax,
-  ) { }
+  ) {  }
 
   //  添加功能
   setTip(name: string, expirationTime: string, description: string) {
@@ -60,6 +67,16 @@ export class UserProfileComponent implements OnInit {
       $('#saveProfile').attr('data-dismiss', '');
       this.nicknameValid = false;
     }else{
+      let profile = {
+        nickname: this.nickname,
+        remark: this.remark,
+        gender: this.innerValue
+      }
+      console.log(profile.gender);
+      this.noteAjax.post(`${NewkitConf.APIGatewayAddress}/api/user/get_info/`, profile)
+        .then((data) => {
+
+      });
       $('#saveProfile').attr('data-dismiss', 'modal');
       this.nicknameValid = true;
     }
@@ -76,5 +93,6 @@ export class UserProfileComponent implements OnInit {
   }
   ngOnchanges(changesObj: any): void{
     this.nickname = changesObj.nickname;
+    this.innerValue = changesObj.innerValue;
   }
 }

@@ -22,7 +22,7 @@ export class EditTipComponent {
   currentId: any;
   tip: any;
   newTip: Tip;
-  // private fileTitle: string;
+  private fileTitle: string = "无标题笔记";
 
   // @Output()
   // private newFileId: EventEmitter<string> = new EventEmitter();
@@ -48,23 +48,19 @@ export class EditTipComponent {
 
   private saveFileInfor(){
     let ue = UE.getEditor('container');
-    this.route.params
-      .subscribe(params => this.currentId = params['id'])
       // .subscribe(tip => this.tip = tip);
       console.log(this.currentId);
     let currentfileInfor = {                          //传给后台的对象包括：文件id, 编辑框内容和文件type
-      currentId : this.currentId,
-      currentContent: ue.getContent(),
-      fileType: 'edite'
+      note_id : this.currentId,
+      desc: ue.getContent(),
+      title: this.fileTitle,
+      // fileType: 'edite'
     }
     if(!$('#edui6_state').hasClass('edui-state-disabled')){
-       this.noteAjax.post(`${NewkitConf.APIGatewayAddress}/api/login/`, ue.getContent())
+       this.noteAjax.post(`${NewkitConf.APIGatewayAddress}/api/note/get_note/`, currentfileInfor)
           .then((data) => {
-            // let dataJson = JSON.parse (data._body);
-            // console.log(dataJson.name);
-            // if(this.signInName == dataJson.name && this.signInPassword == dataJson.password){
-            //   this.router.navigateByUrl('');
-            // }
+
+            
       });
     }
   }
@@ -87,14 +83,18 @@ export class EditTipComponent {
     //   this.fileTitle = '无标题笔记';
     //   console.log(this.fileTitle);
     // }
-
-    let fileContent = '<p>aaaaaaaaaaaaaaa</p>'
+    this.route.params
+      .subscribe(params => this.currentId = params['id'])
+    // let fileContent = '<p>aaaaaaaaaaaaaaa</p>'
     UE.getEditor('container');
-    let ue = UE.getEditor('container');
-    ue.ready(function () {
-      ue.setContent(fileContent);
-      console.log(ue.getContent());
-    });
+     this.noteAjax.get(`${NewkitConf.APIGatewayAddress}/api/note/get_note/`, this.currentId)
+          .then((data) => {
+            let dataJson = JSON.parse (data._body);
+            let ue = UE.getEditor('container');
+            ue.ready(function () {
+              ue.setContent(dataJson.data.desc);
+            });
+      });
 
     // this.emitValue();
     // this.route.params
