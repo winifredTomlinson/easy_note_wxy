@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { NoteAjax } from '../../services/NoteAjax';
 // import { NoteAuth } from '../../services/NoteAuth';
+//chrome 登录效果库：mdl  Material Design Lite
 
 @Component({
   templateUrl: 'app/component/file.component/file.component.html',
@@ -205,8 +206,6 @@ export class FileComponent implements OnInit{
     });
     $(document).on('mousedown', function(event:any){
       if( !$(event.target).is('#trashBox') ){
-      // event.preventDefault();
-      // event.stopPropagation();
         $('#trashBoxMenu').css('display', 'none');
       }   
     });

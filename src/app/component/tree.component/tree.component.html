@@ -1,4 +1,8 @@
 <ul class="tree nk-tree" [ngClass]="{hidden: !treeOpen}">
-  <li *ngFor="let item of treeData" [nk-tree-item]="item" [newFolder]="newFolder" (click)="stopPrapation($event)" (click)="onItemClick(item)" (itemClick)="onItemClick($event)" [treeOpt]="{showIcon: showIcon, showCheckbox: showCheckbox}"
+   <ul class="dropdown-menu tree-dropdown-operate" style="color:@black">
+          <li>清空回收站</li>
+          <li>全部恢复</li>
+      </ul>
+  <li class="tree-li" *ngFor="let item of treeData" [nk-tree-item]="item" [newFolder]="newFolder" (click)="stopPrapation($event)" (click)="onItemClick(item)" (itemClick)="onItemClick($event)" [treeOpt]="{showIcon: showIcon, showCheckbox: showCheckbox}"
    [ngClass]="{'tree-item': !item.hasChildren, 'parent_li': item.hasChildren, 'tree-selected': !item.hasChildren && item.selected, 'tree-open': item.hasChildren && item.open}">
 </ul>

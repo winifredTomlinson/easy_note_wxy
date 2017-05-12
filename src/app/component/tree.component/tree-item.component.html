@@ -1,20 +1,28 @@
 <ng-template [ngIf]="!treeItem.hasChildren">
-  <span class="tree-branch-name">
+  <span class="tree-branch-name" [id]=treeItem.value>
     <i class="my-icon" [ngClass]="{'icon-folder-close-alt': !treeItem.open, 'icon-folder-open-alt': treeItem.open}"></i>
     {{treeItem.text}}
+     <ul class="dropdown-menu">
+          <li>清空回收站</li>
+          <li>全部恢复</li>
+      </ul>
   </span>
   <!--<span class="tree-label" [ngIf]="newFolder"><input type="text" name="" value="新建文件夹"></span>-->
 </ng-template>
 
 <!-- 有子集的场景 -->
 <ng-template [ngIf]="treeItem.hasChildren">
-  <span class="tree-branch-name">
+  <span class="tree-branch-name" [id]=treeItem.value>
       <i class="my-icon" [ngClass]="{'icon-folder-close-alt': !treeItem.open, 'icon-folder-open-alt': treeItem.open}"></i>
       {{treeItem.text}}
       <i class="my-icon icon-angle-down"></i>
   </span>
   <ul [ngClass]="{hidden: !treeItem.open}">
-    <li *ngFor="let item of treeItem.children" [nk-tree-item]="item" (click)="onChildItemClick($event, item)" (itemClick)="onChildItemClick(null, $event)"
+      <ul class="dropdown-menu">
+          <li>清空回收站</li>
+          <li>全部恢复</li>
+      </ul>
+    <li class="tree-li" *ngFor="let item of treeItem.children, let i=idenx" [nk-tree-item]="item" (click)="onChildItemClick($event, item)" (itemClick)="onChildItemClick(null, $event)"
       [treeOpt]="treeOpt" [newFolder]="newFolder" [ngClass]="{'parent_li': item.hasChildren, 'tree-selected': !item.hasChildren && item.selected, 'tree-open': item.hasChildren && item.open}">
   </ul>
 </ng-template>

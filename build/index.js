@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fd828e32be6899516279"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "71e1a2f888fef863747a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -80262,6 +80262,7 @@
 	var core_1 = __webpack_require__(81);
 	// import { NoteAjax } from '../../services/NoteAjax';
 	// import { NoteAuth } from '../../services/NoteAuth';
+	//chrome 登录效果库：mdl  Material Design Lite
 	var FileComponent = (function () {
 	    function FileComponent() {
 	        this.state = 'open';
@@ -80419,8 +80420,6 @@
 	        });
 	        $(document).on('mousedown', function (event) {
 	            if (!$(event.target).is('#trashBox')) {
-	                // event.preventDefault();
-	                // event.stopPropagation();
 	                $('#trashBoxMenu').css('display', 'none');
 	            }
 	        });
@@ -81711,7 +81710,17 @@
 	        this.newFolder = false;
 	        this.itemClick = new core_1.EventEmitter();
 	    }
-	    TreeItemComponent.prototype.ngOnInit = function () { };
+	    TreeItemComponent.prototype.ngOnInit = function () {
+	        $(".tree").bind('contextmenu', function () {
+	            return false;
+	        });
+	        $('.tree-li').on('mousedown', function (event) {
+	            if (event.button == 2) {
+	                console.log(typeof (event.target));
+	                event.preventDefault();
+	            }
+	        });
+	    };
 	    TreeItemComponent.prototype.onChildItemClick = function ($event, item) {
 	        $event && $event.stopPropagation();
 	        this.itemClick.emit(item);

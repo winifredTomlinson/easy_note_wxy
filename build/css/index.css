@@ -1057,7 +1057,7 @@ canvas.line-chart {
 canvas[pieChartLabels] {
   font-size: 20px !important;
 }
-.tree li::after {
+.tree .tree-li::after {
   content: '';
   left: 25px;
   position: absolute;
@@ -1067,7 +1067,7 @@ canvas[pieChartLabels] {
   top: 18px;
   width: 25px;
 }
-.tree li::before {
+.tree .tree-li::before {
   content: '';
   height: 100%;
   left: 25px;
@@ -1079,7 +1079,7 @@ canvas[pieChartLabels] {
   -o-transition: "border-color 0.1s ease 0.1s";
   transition: "border-color 0.1s ease 0.1s";
 }
-.tree li span {
+.tree .tree-li span {
   width: 100%;
   height: 100%;
   color: #999999;
@@ -1089,7 +1089,7 @@ canvas[pieChartLabels] {
   -o-transition: color 0.2s ease 0.1s, background-color 0.2s ease 0.1s, border-color 0.3s ease 0.2s;
   transition: color 0.2s ease 0.1s, background-color 0.2s ease 0.1s, border-color 0.3s ease 0.2s;
 }
-.tree li:last-child::before {
+.tree .tree-li:last-child::before {
   height: 19px;
 }
 .tree .parent_li {

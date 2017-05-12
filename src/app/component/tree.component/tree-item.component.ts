@@ -20,7 +20,18 @@ export class TreeItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    $(".tree").bind('contextmenu', function(){
+       return false;
+    });
+      $('.tree-li').on('mousedown', function(event: any){
+      if(event.button == 2) {
+        console.log(event.target);
+        event.preventDefault();
+      }
+    })
+
+  }
 
   private onChildItemClick($event:any, item:any) {
     $event && $event.stopPropagation();

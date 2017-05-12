@@ -42,7 +42,6 @@ export class TreeComponent implements OnInit {
   ngOnInit() {
     this.processTreeData(this.treeData || []);
     // this.addFolderItem.emit(this.treeData);
-   
   }
 
   private processTreeData(arr: Array<any>) {
